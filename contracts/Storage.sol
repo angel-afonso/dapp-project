@@ -12,9 +12,9 @@ contract Storage {
 
     File[] private files;
 
-    mapping(address => string[]) hashes;
-    mapping(string => address[]) hashShared;
-    mapping(address => uint[]) ownFiles;
+    mapping(address => string[]) private hashes;
+    mapping(string => address[]) private hashShared;
+    mapping(address => uint[]) private ownFiles;
 
     modifier canView(uint index) {
         require(files[index].sharedWith[msg.sender] || files[index].owner == msg.sender, 'You can not see the file');
