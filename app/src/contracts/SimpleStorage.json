@@ -2,6 +2,126 @@
   "contractName": "SimpleStorage",
   "abi": [
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "branchId",
+          "type": "uint256"
+        }
+      ],
+      "name": "__AssertPostCoverageSimpleStorage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "branchId",
+          "type": "uint256"
+        }
+      ],
+      "name": "__AssertPreCoverageSimpleStorage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "branchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "locationIdx",
+          "type": "uint256"
+        }
+      ],
+      "name": "__BranchCoverageSimpleStorage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "lineNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "__CoverageSimpleStorage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fnId",
+          "type": "uint256"
+        }
+      ],
+      "name": "__FunctionCoverageSimpleStorage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "statementId",
+          "type": "uint256"
+        }
+      ],
+      "name": "__StatementCoverageSimpleStorage",
+      "type": "event"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -17,7 +137,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "get",
       "outputs": [
@@ -28,29 +148,29 @@
         }
       ],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x27a650f3e92e6057b3f1239be6fc335fb57d75c570d7274d8902eb0b04e48014\",\"urls\":[\"bzz-raw://5921ad02b314eeb6ba35cc059023a56d28a8aa9133076210b9df43f54824308d\",\"dweb:/ipfs/QmZFS95cqTQQE5XP11DAxkYYaeiQPSSfquyhhc2Df3v36J\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158202e5bb65f83c65610ed894d43ec27ccee64fe8432ac4c64d7fd98fae8e8255fb864736f6c634300050c0032",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a723158202e5bb65f83c65610ed894d43ec27ccee64fe8432ac4c64d7fd98fae8e8255fb864736f6c634300050c0032",
-  "sourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;",
-  "deployedSourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;;;;;;;;;;;;;;;;;;72:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;72:53:1;;;;;;;;;;;;;;;;;:::i;:::-;;129:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"branchId\",\"type\":\"uint256\"}],\"name\":\"__AssertPostCoverageSimpleStorage\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"branchId\",\"type\":\"uint256\"}],\"name\":\"__AssertPreCoverageSimpleStorage\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"branchId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"locationIdx\",\"type\":\"uint256\"}],\"name\":\"__BranchCoverageSimpleStorage\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"lineNumber\",\"type\":\"uint256\"}],\"name\":\"__CoverageSimpleStorage\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fnId\",\"type\":\"uint256\"}],\"name\":\"__FunctionCoverageSimpleStorage\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fileName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"statementId\",\"type\":\"uint256\"}],\"name\":\"__StatementCoverageSimpleStorage\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/oxoft/Documents/dapp/coverageEnv/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/oxoft/Documents/dapp/coverageEnv/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xa5a073115c3bcdfaacd06aa09dbc3de54587f122b80a33072d5c486b538275fb\",\"urls\":[\"bzz-raw://77330c306a0bba2164fc5fe5ea0c77a3da2d9e310870769cab89631d7a070626\",\"dweb:/ipfs/Qmc1sueT38dMNXUsPHbSzA9gyQMEYh3N19ceTNcqeHqdfz\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506102fe806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806360fe47b11461003b5780636d4ce63c14610069575b600080fd5b6100676004803603602081101561005157600080fd5b8101908080359060200190929190505050610087565b005b61007161018d565b6040518082815260200191505060405180910390f35b7f87b318db883a9cac9341a32ea5e713fdf2e7159e9711a0e8b23c5bfae890687c6001604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17ff77c9a407145ee5e29cfce5c4435373c52db73aea42332ce96bc18087bd698356007604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17f070e47e962029736988895daa32187426e0ff4577b14f66a83ade53b92fb7f556001604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a18060008190555050565b60007f87b318db883a9cac9341a32ea5e713fdf2e7159e9711a0e8b23c5bfae890687c6002604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17ff77c9a407145ee5e29cfce5c4435373c52db73aea42332ce96bc18087bd69835600b604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17f070e47e962029736988895daa32187426e0ff4577b14f66a83ade53b92fb7f556002604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a160005490509056fe2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6ca265627a7a723158203411a46db14c9ec39973a139472eb5366be1d00f1ccaee24d838c5d4af8017d764736f6c634300050c0032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806360fe47b11461003b5780636d4ce63c14610069575b600080fd5b6100676004803603602081101561005157600080fd5b8101908080359060200190929190505050610087565b005b61007161018d565b6040518082815260200191505060405180910390f35b7f87b318db883a9cac9341a32ea5e713fdf2e7159e9711a0e8b23c5bfae890687c6001604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17ff77c9a407145ee5e29cfce5c4435373c52db73aea42332ce96bc18087bd698356007604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17f070e47e962029736988895daa32187426e0ff4577b14f66a83ade53b92fb7f556001604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a18060008190555050565b60007f87b318db883a9cac9341a32ea5e713fdf2e7159e9711a0e8b23c5bfae890687c6002604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17ff77c9a407145ee5e29cfce5c4435373c52db73aea42332ce96bc18087bd69835600b604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a17f070e47e962029736988895daa32187426e0ff4577b14f66a83ade53b92fb7f556002604051808060200183815260200182810382526036815260200180610294603691396040019250505060405180910390a160005490509056fe2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6ca265627a7a723158203411a46db14c9ec39973a139472eb5366be1d00f1ccaee24d838c5d4af8017d764736f6c634300050c0032",
+  "sourceMap": "25:1211:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:1211:1;;;;;;;",
+  "deployedSourceMap": "25:1211:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:1211:1;;;;;;;;;;;;;;;;;;;;;;;;532:340;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;532:340:1;;;;;;;;;;;;;;;;;:::i;:::-;;876:358;;;:::i;:::-;;;;;;;;;;;;;;;;;;;532:340;566:91;655:1;566:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;665:83;746:1;665:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;759:92;849:1;759:92;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;866:1;853:10;:14;;;;532:340;:::o;876:358::-;912:4;924:91;1013:1;924:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1023:84;1104:2;1023:84;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1118:92;1208:1;1118:92;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1219:10;;1212:17;;876:358;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract SimpleStorage {event __CoverageSimpleStorage(string fileName, uint256 lineNumber);\nevent __FunctionCoverageSimpleStorage(string fileName, uint256 fnId);\nevent __StatementCoverageSimpleStorage(string fileName, uint256 statementId);\nevent __BranchCoverageSimpleStorage(string fileName, uint256 branchId, uint256 locationIdx);\nevent __AssertPreCoverageSimpleStorage(string fileName, uint256 branchId);\nevent __AssertPostCoverageSimpleStorage(string fileName, uint256 branchId);\n\n  uint storedData;\n\n  function set(uint x) public {emit __FunctionCoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',1);\n\nemit __CoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',7);\n    emit __StatementCoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',1);\nstoredData = x;\n  }\n\n  function get() public      returns (uint) {emit __FunctionCoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',2);\n\nemit __CoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',11);\n    emit __StatementCoverageSimpleStorage('/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol',2);\nreturn storedData;\n  }\n}\n",
+  "sourcePath": "/home/oxoft/Documents/dapp/coverageEnv/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol",
+    "absolutePath": "/home/oxoft/Documents/dapp/coverageEnv/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
-        79
+        148
       ]
     },
-    "id": 80,
+    "id": 149,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 58,
+        "id": 59,
         "literals": [
           "solidity",
           "^",
@@ -66,20 +186,461 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 79,
+        "id": 148,
         "linearizedBaseContracts": [
-          79
+          148
         ],
         "name": "SimpleStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "anonymous": false,
+            "documentation": null,
+            "id": 65,
+            "name": "__CoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 64,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 65,
+                  "src": "79:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 60,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "79:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 63,
+                  "indexed": false,
+                  "name": "lineNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 65,
+                  "src": "96:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 62,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "96:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "78:37:1"
+            },
+            "src": "49:67:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 71,
+            "name": "__FunctionCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 67,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 71,
+                  "src": "155:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 66,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "155:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 69,
+                  "indexed": false,
+                  "name": "fnId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 71,
+                  "src": "172:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 68,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "172:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "154:31:1"
+            },
+            "src": "117:69:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 77,
+            "name": "__StatementCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 76,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 73,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 77,
+                  "src": "226:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 72,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "226:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 75,
+                  "indexed": false,
+                  "name": "statementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 77,
+                  "src": "243:19:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 74,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "243:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "225:38:1"
+            },
+            "src": "187:77:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 85,
+            "name": "__BranchCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 84,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 79,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "301:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 78,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "301:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 81,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "318:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 80,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "318:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 83,
+                  "indexed": false,
+                  "name": "locationIdx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "336:19:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 82,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "300:56:1"
+            },
+            "src": "265:92:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 91,
+            "name": "__AssertPreCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 90,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 87,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 91,
+                  "src": "397:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 86,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "397:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 89,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 91,
+                  "src": "414:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 88,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "396:35:1"
+            },
+            "src": "358:74:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 97,
+            "name": "__AssertPostCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 96,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 93,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "473:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 92,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "473:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 95,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "490:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "472:35:1"
+            },
+            "src": "433:75:1"
+          },
+          {
             "constant": false,
-            "id": 60,
+            "id": 99,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 79,
-            "src": "52:15:1",
+            "scope": 148,
+            "src": "512:15:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -87,10 +648,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 59,
+              "id": 98,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "52:4:1",
+              "src": "512:4:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -101,26 +662,269 @@
           },
           {
             "body": {
-              "id": 69,
+              "id": 123,
               "nodeType": "Block",
-              "src": "100:25:1",
+              "src": "560:312:1",
               "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 105,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "598:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 106,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "655:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        }
+                      ],
+                      "id": 104,
+                      "name": "__FunctionCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 71,
+                      "src": "566:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 107,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "566:91:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 108,
+                  "nodeType": "EmitStatement",
+                  "src": "561:96:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 110,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "689:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "37",
+                        "id": 111,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "746:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_7_by_1",
+                          "typeString": "int_const 7"
+                        },
+                        "value": "7"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_7_by_1",
+                          "typeString": "int_const 7"
+                        }
+                      ],
+                      "id": 109,
+                      "name": "__CoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "665:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 112,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "665:83:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 113,
+                  "nodeType": "EmitStatement",
+                  "src": "660:88:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 115,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "792:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 116,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "849:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        }
+                      ],
+                      "id": 114,
+                      "name": "__StatementCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 77,
+                      "src": "759:32:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 117,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "759:92:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 118,
+                  "nodeType": "EmitStatement",
+                  "src": "754:97:1"
+                },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 67,
+                    "id": 121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 65,
+                      "id": 119,
                       "name": "storedData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 60,
-                      "src": "106:10:1",
+                      "referencedDeclaration": 99,
+                      "src": "853:10:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -130,47 +934,47 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 66,
+                      "id": 120,
                       "name": "x",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 62,
-                      "src": "119:1:1",
+                      "referencedDeclaration": 101,
+                      "src": "866:1:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "106:14:1",
+                    "src": "853:14:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 68,
+                  "id": 122,
                   "nodeType": "ExpressionStatement",
-                  "src": "106:14:1"
+                  "src": "853:14:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 70,
+            "id": 124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "set",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 63,
+              "id": 102,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 62,
+                  "id": 101,
                   "name": "x",
                   "nodeType": "VariableDeclaration",
-                  "scope": 70,
-                  "src": "85:6:1",
+                  "scope": 124,
+                  "src": "545:6:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -178,10 +982,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 61,
+                    "id": 100,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "85:4:1",
+                    "src": "545:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -191,71 +995,314 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "84:8:1"
+              "src": "544:8:1"
             },
             "returnParameters": {
-              "id": 64,
+              "id": 103,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "100:0:1"
+              "src": "560:0:1"
             },
-            "scope": 79,
-            "src": "72:53:1",
+            "scope": 148,
+            "src": "532:340:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 77,
+              "id": 146,
               "nodeType": "Block",
-              "src": "171:28:1",
+              "src": "918:316:1",
               "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 130,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "956:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "32",
+                        "id": 131,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1013:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        },
+                        "value": "2"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        }
+                      ],
+                      "id": 129,
+                      "name": "__FunctionCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 71,
+                      "src": "924:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 132,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "924:91:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 133,
+                  "nodeType": "EmitStatement",
+                  "src": "919:96:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 135,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1047:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3131",
+                        "id": 136,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1104:2:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_11_by_1",
+                          "typeString": "int_const 11"
+                        },
+                        "value": "11"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_11_by_1",
+                          "typeString": "int_const 11"
+                        }
+                      ],
+                      "id": 134,
+                      "name": "__CoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "1023:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 137,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1023:84:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 138,
+                  "nodeType": "EmitStatement",
+                  "src": "1018:89:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 140,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1151:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "32",
+                        "id": 141,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1208:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        },
+                        "value": "2"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        }
+                      ],
+                      "id": 139,
+                      "name": "__StatementCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 77,
+                      "src": "1118:32:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 142,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1118:92:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 143,
+                  "nodeType": "EmitStatement",
+                  "src": "1113:97:1"
+                },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 75,
+                    "id": 144,
                     "name": "storedData",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 60,
-                    "src": "184:10:1",
+                    "referencedDeclaration": 99,
+                    "src": "1219:10:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 74,
-                  "id": 76,
+                  "functionReturnParameters": 128,
+                  "id": 145,
                   "nodeType": "Return",
-                  "src": "177:17:1"
+                  "src": "1212:17:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 78,
+            "id": 147,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 71,
+              "id": 125,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "141:2:1"
+              "src": "888:2:1"
             },
             "returnParameters": {
-              "id": 74,
+              "id": 128,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 73,
+                  "id": 127,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 78,
-                  "src": "165:4:1",
+                  "scope": 147,
+                  "src": "912:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -263,10 +1310,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 72,
+                    "id": 126,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "165:4:1",
+                    "src": "912:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -276,33 +1323,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "164:6:1"
+              "src": "911:6:1"
             },
-            "scope": 79,
-            "src": "129:70:1",
-            "stateMutability": "view",
+            "scope": 148,
+            "src": "876:358:1",
+            "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 80,
-        "src": "25:176:1"
+        "scope": 149,
+        "src": "25:1211:1"
       }
     ],
-    "src": "0:202:1"
+    "src": "0:1237:1"
   },
   "legacyAST": {
-    "absolutePath": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol",
+    "absolutePath": "/home/oxoft/Documents/dapp/coverageEnv/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
-        79
+        148
       ]
     },
-    "id": 80,
+    "id": 149,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 58,
+        "id": 59,
         "literals": [
           "solidity",
           "^",
@@ -318,20 +1365,461 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 79,
+        "id": 148,
         "linearizedBaseContracts": [
-          79
+          148
         ],
         "name": "SimpleStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "anonymous": false,
+            "documentation": null,
+            "id": 65,
+            "name": "__CoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 64,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 61,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 65,
+                  "src": "79:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 60,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "79:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 63,
+                  "indexed": false,
+                  "name": "lineNumber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 65,
+                  "src": "96:18:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 62,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "96:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "78:37:1"
+            },
+            "src": "49:67:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 71,
+            "name": "__FunctionCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 67,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 71,
+                  "src": "155:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 66,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "155:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 69,
+                  "indexed": false,
+                  "name": "fnId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 71,
+                  "src": "172:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 68,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "172:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "154:31:1"
+            },
+            "src": "117:69:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 77,
+            "name": "__StatementCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 76,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 73,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 77,
+                  "src": "226:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 72,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "226:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 75,
+                  "indexed": false,
+                  "name": "statementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 77,
+                  "src": "243:19:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 74,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "243:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "225:38:1"
+            },
+            "src": "187:77:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 85,
+            "name": "__BranchCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 84,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 79,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "301:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 78,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "301:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 81,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "318:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 80,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "318:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 83,
+                  "indexed": false,
+                  "name": "locationIdx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 85,
+                  "src": "336:19:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 82,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "300:56:1"
+            },
+            "src": "265:92:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 91,
+            "name": "__AssertPreCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 90,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 87,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 91,
+                  "src": "397:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 86,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "397:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 89,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 91,
+                  "src": "414:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 88,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "396:35:1"
+            },
+            "src": "358:74:1"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 97,
+            "name": "__AssertPostCoverageSimpleStorage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 96,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 93,
+                  "indexed": false,
+                  "name": "fileName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "473:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 92,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "473:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 95,
+                  "indexed": false,
+                  "name": "branchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "490:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "472:35:1"
+            },
+            "src": "433:75:1"
+          },
+          {
             "constant": false,
-            "id": 60,
+            "id": 99,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 79,
-            "src": "52:15:1",
+            "scope": 148,
+            "src": "512:15:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -339,10 +1827,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 59,
+              "id": 98,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "52:4:1",
+              "src": "512:4:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -353,26 +1841,269 @@
           },
           {
             "body": {
-              "id": 69,
+              "id": 123,
               "nodeType": "Block",
-              "src": "100:25:1",
+              "src": "560:312:1",
               "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 105,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "598:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 106,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "655:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        }
+                      ],
+                      "id": 104,
+                      "name": "__FunctionCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 71,
+                      "src": "566:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 107,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "566:91:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 108,
+                  "nodeType": "EmitStatement",
+                  "src": "561:96:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 110,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "689:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "37",
+                        "id": 111,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "746:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_7_by_1",
+                          "typeString": "int_const 7"
+                        },
+                        "value": "7"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_7_by_1",
+                          "typeString": "int_const 7"
+                        }
+                      ],
+                      "id": 109,
+                      "name": "__CoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "665:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 112,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "665:83:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 113,
+                  "nodeType": "EmitStatement",
+                  "src": "660:88:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 115,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "792:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 116,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "849:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        }
+                      ],
+                      "id": 114,
+                      "name": "__StatementCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 77,
+                      "src": "759:32:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 117,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "759:92:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 118,
+                  "nodeType": "EmitStatement",
+                  "src": "754:97:1"
+                },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 67,
+                    "id": 121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 65,
+                      "id": 119,
                       "name": "storedData",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 60,
-                      "src": "106:10:1",
+                      "referencedDeclaration": 99,
+                      "src": "853:10:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -382,47 +2113,47 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 66,
+                      "id": 120,
                       "name": "x",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 62,
-                      "src": "119:1:1",
+                      "referencedDeclaration": 101,
+                      "src": "866:1:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "106:14:1",
+                    "src": "853:14:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 68,
+                  "id": 122,
                   "nodeType": "ExpressionStatement",
-                  "src": "106:14:1"
+                  "src": "853:14:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 70,
+            "id": 124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "set",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 63,
+              "id": 102,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 62,
+                  "id": 101,
                   "name": "x",
                   "nodeType": "VariableDeclaration",
-                  "scope": 70,
-                  "src": "85:6:1",
+                  "scope": 124,
+                  "src": "545:6:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -430,10 +2161,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 61,
+                    "id": 100,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "85:4:1",
+                    "src": "545:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -443,71 +2174,314 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "84:8:1"
+              "src": "544:8:1"
             },
             "returnParameters": {
-              "id": 64,
+              "id": 103,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "100:0:1"
+              "src": "560:0:1"
             },
-            "scope": 79,
-            "src": "72:53:1",
+            "scope": 148,
+            "src": "532:340:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 77,
+              "id": 146,
               "nodeType": "Block",
-              "src": "171:28:1",
+              "src": "918:316:1",
               "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 130,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "956:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "32",
+                        "id": 131,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1013:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        },
+                        "value": "2"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        }
+                      ],
+                      "id": 129,
+                      "name": "__FunctionCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 71,
+                      "src": "924:31:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 132,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "924:91:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 133,
+                  "nodeType": "EmitStatement",
+                  "src": "919:96:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 135,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1047:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3131",
+                        "id": 136,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1104:2:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_11_by_1",
+                          "typeString": "int_const 11"
+                        },
+                        "value": "11"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_11_by_1",
+                          "typeString": "int_const 11"
+                        }
+                      ],
+                      "id": 134,
+                      "name": "__CoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "1023:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 137,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1023:84:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 138,
+                  "nodeType": "EmitStatement",
+                  "src": "1018:89:1"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "2f686f6d652f6f786f66742f446f63756d656e74732f646170702f636f6e7472616374732f53696d706c6553746f726167652e736f6c",
+                        "id": 140,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1151:56:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        "value": "/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "32",
+                        "id": 141,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1208:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        },
+                        "value": "2"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_55565bc0ecc99606c85f706791939e1231271bd398697428ed7cbcb47450bc97",
+                          "typeString": "literal_string \"/home/oxoft/Documents/dapp/contracts/SimpleStorage.sol\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        }
+                      ],
+                      "id": 139,
+                      "name": "__StatementCoverageSimpleStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 77,
+                      "src": "1118:32:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 142,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1118:92:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 143,
+                  "nodeType": "EmitStatement",
+                  "src": "1113:97:1"
+                },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 75,
+                    "id": 144,
                     "name": "storedData",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 60,
-                    "src": "184:10:1",
+                    "referencedDeclaration": 99,
+                    "src": "1219:10:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 74,
-                  "id": 76,
+                  "functionReturnParameters": 128,
+                  "id": 145,
                   "nodeType": "Return",
-                  "src": "177:17:1"
+                  "src": "1212:17:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 78,
+            "id": 147,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 71,
+              "id": 125,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "141:2:1"
+              "src": "888:2:1"
             },
             "returnParameters": {
-              "id": 74,
+              "id": 128,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 73,
+                  "id": 127,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 78,
-                  "src": "165:4:1",
+                  "scope": 147,
+                  "src": "912:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -515,10 +2489,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 72,
+                    "id": 126,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "165:4:1",
+                    "src": "912:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -528,20 +2502,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "164:6:1"
+              "src": "911:6:1"
             },
-            "scope": 79,
-            "src": "129:70:1",
-            "stateMutability": "view",
+            "scope": 148,
+            "src": "876:358:1",
+            "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 80,
-        "src": "25:176:1"
+        "scope": 149,
+        "src": "25:1211:1"
       }
     ],
-    "src": "0:202:1"
+    "src": "0:1237:1"
   },
   "compiler": {
     "name": "solc",
@@ -556,8 +2530,7 @@
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-11-25T15:18:58.645Z",
-  "networkType": "ethereum",
+  "updatedAt": "2019-11-26T12:38:52.714Z",
   "devdoc": {
     "methods": {}
   },

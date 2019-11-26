@@ -18,15 +18,26 @@ contract("Storage", accounts => {
 
     it('Should get file hash', async () => {
         await storageInstance.add(`0x${'0'.repeat(64)}`, 0, [], { from: accounts[0] });
-        truffleAssert.passes(storageInstance.deleteFile(`0x${'0'.repeat(64)}`, { from: accounts[0] }))
+        assert.equal(await storageInstance.getFile(0, { from: accounts[0] }), `0x${'0'.repeat(64)}`);
     });
 
     it('Should delete file', async () => {
         await storageInstance.add(`0x${'0'.repeat(64)}`, 0, [], { from: accounts[0] });
+        truffleAssert.passes(storageInstance.deleteFile(`0x${'0'.repeat(64)}`, { from: accounts[0] }))
+    });
+
+    it('Should access to shared file', async () => {
+        await storageInstance.add(`0x${'0'.repeat(64)}`, 0, [accounts[1]], { from: accounts[0] });
+        assert.equal(await storageInstance.getFile(0, { from: accounts[1] }), `0x${'0'.repeat(64)}`);
     });
 
     it('Should throw on try to access a non own file', async () => {
         await storageInstance.add(`0x${'0'.repeat(64)}`, 0, [], { from: accounts[0] });
         truffleAssert.fails(storageInstance.getFile(0, { from: accounts[1] }));
+    });
+
+    it('Should throw on try to delete a non own file', async () => {
+        await storageInstance.add(`0x${'0'.repeat(64)}`, 0, [], { from: accounts[0] });
+        truffleAssert.fails(storageInstance.deleteFile(0, { from: accounts[1] }));
     });
 });
