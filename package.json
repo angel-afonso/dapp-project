@@ -1,0 +1,20 @@
+{
+  "name": "dapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:angel-afonso/dapp-project.git",
+  "author": "Angel Afonso<angelafonso@oxoft.io>",
+  "license": "MIT",
+  "scripts": {
+    "test": "truffle test",
+    "migrate": "truffle migrate"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "solidity-coverage": "^0.6.7",
+    "truffle-assertions": "^0.9.2"
+  },
+  "dependencies": {
+    "truffle": "^5.1.1"
+  }
+}
