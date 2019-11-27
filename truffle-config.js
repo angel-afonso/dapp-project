@@ -7,8 +7,9 @@ module.exports = {
   networks: {
     development: {
       host: 'localhost',
-      port: 7545,
-      network_id: '*',
+      port: 8545,
+      network_id: '*'
     }
-  }
+  },
+  plugins: ["solidity-coverage"]
 };
