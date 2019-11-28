@@ -1,0 +1,102 @@
+.upload-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000091;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-check {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.upload-modal__container {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.upload-modal__accept-btn {
+    background-color: #abdbe6;
+    border: unset;
+    padding: 5px;
+    font-size: 1.2em;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.amount-input, .name-input {
+    padding: 5px;
+    border: 1px solid #c0c0c0 !important;
+    box-shadow: unset;
+    border-radius: 5px;
+}
+
+.amount-inputs-container {
+    display: flex;
+}
+
+.input-wrapper {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.close-container {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -90px;
+    background: #b1b1b1;
+    border-radius: 50%;
+    padding: 1px 5px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.name-input {
+    padding: 5px;
+}
+
+.upload-input {
+    margin: 5px 0;
+}
+
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+
+[type="file"]+label {
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+    color: #3a3a3a;
+    text-align: center;
+    border: 1px solid #c0c0c0;
+}
+
+[type="file"]:focus+label, [type="file"]+label:hover {
+    background-color: #abdbe6;
+}
+
+[type="file"]:focus+label {
+    outline: 1px dotted #000;
+}

@@ -1,3 +1,47 @@
 a {
     color: black;
 }
+
+.home {
+    display: flex;
+}
+
+.home__sidebar {
+    border-right: 1px solid #bbbbbb;
+    width: 15%;
+    padding-top: 15px;
+}
+
+.home__item-view {
+    width: 85%;
+    padding: 10px;
+}
+
+.home__items-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home__item {
+    margin: 20px;
+}
+
+.home__logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.options__item--new, .options__item {
+    padding: 10px 0;
+    width: 100%;
+    border: unset;
+    background-color: white;
+}
+
+.options__item--new {
+    background-color: #abdbe6;
+}

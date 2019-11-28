@@ -1,0 +1,27 @@
+.item-card__container {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 215px;
+    border: 1px solid #919191;
+    box-shadow: 0 0 5px #919191;
+    border-radius: 10px;
+}
+
+.item-card__image-container {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 75%;
+    background-color: aquamarine;
+}
+
+.item-card__info {
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+/* 100% */

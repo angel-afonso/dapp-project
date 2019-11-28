@@ -4,11 +4,14 @@ import Loader from '../Loader/Loader';
 import { Context } from '../../utils/context';
 import Ipfs from 'ipfs';
 import { getWeb3 } from '../../utils/getWeb3';
+import StorageContract from '../../contracts/Storage.json';
 import "./App.css";
 
 const Home = lazy(() => import('../Home/Home'));
 const AddFile = lazy(() => import('../AddFile/AddFile'));
-const Test = lazy(() => import('../Test/Test'));
+const List = lazy(() => import('../List/List'));
+const View = lazy(() => import('../View/View'));
+
 
 class App extends Component {
   constructor() {
@@ -23,8 +26,17 @@ class App extends Component {
     let web3 = await getWeb3();
     let ipfs = await Ipfs.create();
 
+    const accounts = await web3.eth.getAccounts();
+    const networkId = await web3.eth.net.getId();
+    const deployedNetwork = StorageContract.networks[networkId];
+
+    const contract = new web3.eth.Contract(
+      StorageContract.abi,
+      deployedNetwork && deployedNetwork.address,
+    );
+
     this.setState({
-      web3, ipfs
+      web3, ipfs, accounts, contract
     });
   }
 
@@ -36,8 +48,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/save" component={AddFile} />
-              <Route exact path="/list" component={AddFile} />
-              <Route exact path="/test" component={Test} />
+              <Route exact path="/list" component={List} />
+              <Route exact path="/view/:index" component={View} />
             </Switch>
           </Suspense>
         </Context.Provider>
