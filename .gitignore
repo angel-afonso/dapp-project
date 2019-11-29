@@ -26,3 +26,5 @@ yarn.lock
 app/src/contracts
 
 coverage.json
+
+blockchain

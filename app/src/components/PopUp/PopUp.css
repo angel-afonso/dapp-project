@@ -1,0 +1,43 @@
+.popup-container {
+    position: fixed;
+    background: #73a2ad;
+    width: 240px;
+    top: 10px;
+    right: 10px;
+    color: white;
+    border-radius: 5px;
+    z-index: 10;
+    animation: show-notification 1s ease-in-out;
+}
+
+.popup-container--show {
+    animation: show-notification 1s ease-in-out;
+}
+
+.popup-content {
+    padding: 10px;
+    text-align: center;
+}
+
+.popup-container--close {
+    right: -100%;
+    animation: hide-notification 1s ease-out;
+}
+
+@keyframes show-notification {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 10px
+    }
+}
+
+@keyframes hide-notification {
+    from {
+        right: 10px;
+    }
+    to {
+        right: -100%;
+    }
+}

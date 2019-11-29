@@ -13,7 +13,6 @@ class View extends React.Component {
         const { contract, accounts } = this.context;
         const { match: { params: { index } } } = this.props;
         let tx = await contract.methods.getFile(index).call({ from: accounts[0] });
-        console.log(tx);
         this.setState({
             file: tx[0],
         });

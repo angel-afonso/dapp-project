@@ -1,17 +1,13 @@
 import React, { Component, Suspense, lazy } from "react";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import { Context } from '../../utils/context';
 import Ipfs from 'ipfs';
 import { getWeb3 } from '../../utils/getWeb3';
 import StorageContract from '../../contracts/Storage.json';
+import Routes from "../Routes/Routes";
+import { ReactComponent as Logo } from "../../assets/img/logo.svg";
+import AddFile from "../AddFile/AddFile";
 import "./App.css";
-
-const Home = lazy(() => import('../Home/Home'));
-const AddFile = lazy(() => import('../AddFile/AddFile'));
-const List = lazy(() => import('../List/List'));
-const View = lazy(() => import('../View/View'));
-
+import { Context } from "../../utils/context";
 
 class App extends Component {
   constructor() {
@@ -19,7 +15,13 @@ class App extends Component {
     this.state = {
       web3: null,
       ipfs: null,
+      newFile: false,
+      contract: null,
+      accounts: [],
     };
+
+    this.closeUploadModal = this.closeUploadModal.bind(this);
+    this.openUploadModal = this.openUploadModal.bind(this);
   }
 
   async componentDidMount() {
@@ -40,20 +42,35 @@ class App extends Component {
     });
   }
 
+
+  closeUploadModal() {
+    this.setState({ newFile: false });
+  }
+
+  openUploadModal() {
+    this.setState({ newFile: true });
+  }
+
   render() {
-    return !this.state.web3 ? <Loader /> : (
-      <Router>
-        <Context.Provider value={this.state}>
-          <Suspense fallback={<Loader />}>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/save" component={AddFile} />
-              <Route exact path="/list" component={List} />
-              <Route exact path="/view/:index" component={View} />
-            </Switch>
-          </Suspense>
+    const { newFile, web3, ipfs, contract, accounts } = this.state;
+    return !web3 ? <Loader /> : (
+      <div className="app">
+        <Context.Provider value={{ web3, ipfs, contract, accounts }}>
+
+          {newFile && <AddFile closeModal={this.closeUploadModal} />}
+          <div className="app__sidebar">
+            <div className="app__logo">
+              <Logo />
+            </div>
+            <div className="app__options">
+              <button className="options__item--new" onClick={this.openUploadModal}>New</button>
+              <button className="options__item">Shared</button>
+              <button className="options__item">upload</button>
+            </div>
+          </div>
+          <Routes />
         </Context.Provider>
-      </Router>
+      </div>
     );
   }
 }
