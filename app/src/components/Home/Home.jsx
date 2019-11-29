@@ -29,7 +29,7 @@ class Home extends React.Component {
                         indexes.map((index) => {
                             return (
                                 <div className="home__item">
-                                    <ListItem key={index} />
+                                    <ListItem key={index} index={index} />
                                 </div>)
                         })
                     }

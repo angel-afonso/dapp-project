@@ -1,5 +1,4 @@
 import React from 'react';
-import { Context } from '../../utils/context';
 
 class View extends React.Component {
     constructor() {
