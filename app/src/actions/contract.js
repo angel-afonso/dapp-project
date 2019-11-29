@@ -1,15 +1,28 @@
-const ACTIONS = {
-    SET_IPFS: "SET_IPFS",
-    SET_WEB3: "SET_WEB3",
-    SET_CONTRACT: "SET_CONTRACT",
+export const ACTIONS = {
+    UPDATE_INDEXES: "UPDATE_INDEXES",
     SET_CONTENT: "SET_CONTENT",
+    SET_INDEXES: "SET_INDEXES",
 }
 
-export function setContent(web3, ipfs, contract) {
+export function setContent(web3, ipfs, contract, accounts) {
     return {
         type: ACTIONS.SET_CONTENT,
         payload: {
-            web3, ipfs, contract
+            web3, ipfs, contract, accounts
         }
     };
+}
+
+export function setIndexes(indexes) {
+    return {
+        type: ACTIONS.SET_INDEXES,
+        indexes,
+    }
+}
+
+export function updateIndexes(contract, account) {
+    return {
+        type: ACTIONS.UPDATE_INDEXES,
+        payload: contract.methods.getIndexes().call({ from: account }),
+    }
 }

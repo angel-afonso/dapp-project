@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { Component } from "react";
 import Loader from '../Loader/Loader';
 import Ipfs from 'ipfs';
 import { getWeb3 } from '../../utils/getWeb3';
@@ -6,8 +6,9 @@ import StorageContract from '../../contracts/Storage.json';
 import Routes from "../Routes/Routes";
 import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import AddFile from "../AddFile/AddFile";
+import { connect } from "react-redux";
+import { setContent } from "../../actions/contract";
 import "./App.css";
-import { Context } from "../../utils/context";
 
 class App extends Component {
   constructor() {
@@ -25,6 +26,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const { setContent } = this.props;
     let web3 = await getWeb3();
     let ipfs = await Ipfs.create();
 
@@ -37,9 +39,7 @@ class App extends Component {
       deployedNetwork && deployedNetwork.address,
     );
 
-    this.setState({
-      web3, ipfs, accounts, contract
-    });
+    setContent(web3, ipfs, contract, accounts);
   }
 
 
@@ -52,27 +52,30 @@ class App extends Component {
   }
 
   render() {
-    const { newFile, web3, ipfs, contract, accounts } = this.state;
+    const { newFile } = this.state;
+    const { web3 } = this.props;
+
     return !web3 ? <Loader /> : (
       <div className="app">
-        <Context.Provider value={{ web3, ipfs, contract, accounts }}>
-
-          {newFile && <AddFile closeModal={this.closeUploadModal} />}
-          <div className="app__sidebar">
-            <div className="app__logo">
-              <Logo />
-            </div>
-            <div className="app__options">
-              <button className="options__item--new" onClick={this.openUploadModal}>New</button>
-              <button className="options__item">Shared</button>
-              <button className="options__item">upload</button>
-            </div>
+        {newFile && <AddFile closeModal={this.closeUploadModal} />}
+        <div className="app__sidebar">
+          <div className="app__logo">
+            <Logo />
           </div>
-          <Routes />
-        </Context.Provider>
+          <div className="app__options">
+            <button className="options__item--new" onClick={this.openUploadModal}>New</button>
+            <button className="options__item">Shared</button>
+            <button className="options__item">upload</button>
+          </div>
+        </div>
+        <Routes />
       </div>
     );
   }
 }
 
-export default App;
+export default connect((state) => ({
+  web3: state.contract.web3,
+}), {
+  setContent
+})(App);

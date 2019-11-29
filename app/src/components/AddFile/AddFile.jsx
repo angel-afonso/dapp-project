@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import PopUp from "../PopUp/PopUp"
+import PopUp from "../PopUp/PopUp";
+import { updateIndexes } from "../../actions/contract";
+import { connect } from "react-redux";
 import "./AddFile.css";
-import { Context } from '../../utils/context'
 
 class AddFile extends React.Component {
     constructor() {
@@ -51,12 +52,13 @@ class AddFile extends React.Component {
 
     uploadDocument() {
         if (!this.state.file) return;
-        const { ipfs, accounts, contract } = this.context;
+        const { ipfs, accounts, storage, updateIndexes } = this.props;
 
         let fileReader = new FileReader();
         fileReader.onload = async () => {
             ipfs.add(Buffer.from(fileReader.result)).then(async (result) => {
-                const tx = await contract.methods.add(result[0].path, 0, this.state.name, []).send({ from: accounts[0] });
+                await storage.methods.add(result[0].path, 0, this.state.name, []).send({ from: accounts[0] });
+                updateIndexes(storage, accounts[0]);
                 this.setState({ showNotification: true, notificationMessage: "File saved successfully", file: "", name: "", hasAmount: "" })
             });
         };
@@ -98,8 +100,12 @@ class AddFile extends React.Component {
     }
 }
 
-AddFile.contextType = Context;
 AddFile.defaultProps = {
     closeModal: () => { },
 };
-export default AddFile;
+
+export default connect((state) => ({
+    ipfs: state.contract.ipfs,
+    storage: state.contract.storage,
+    accounts: state.contract.accounts,
+}), { updateIndexes })(AddFile);

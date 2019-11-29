@@ -13,7 +13,6 @@ class PopUp extends React.Component {
     componentDidMount() {
         if (this.timeout) window.clearTimeout(this.timeout);
         this.timeout = window.setTimeout(() => {
-            console.log("here");
             this.setState({ close: true });
             this.close();
         }, 5 * 1000);
