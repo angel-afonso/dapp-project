@@ -22,6 +22,9 @@
     justify-content: space-around;
     flex-direction: column;
     padding: 20px;
+    width: 40%;
+    max-width: 330px;
+    min-width: 230px;
     border-radius: 10px;
 }
 
@@ -34,7 +37,7 @@
     border-radius: 5px;
 }
 
-.amount-input, .name-input {
+.name-input {
     padding: 5px;
     border: 1px solid #c0c0c0 !important;
     box-shadow: unset;
@@ -52,7 +55,7 @@
 
 .close-container {
     position: relative;
-    left: 200px;
+    left: 103%;
     top: -30px;
     height: 22px;
     display: flex;
@@ -72,6 +75,26 @@
 
 .upload-input {
     margin: 5px 0;
+}
+
+.amount-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.amount-input {
+    width: 60%;
+    margin: 0 2px;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #c0c0c0;
+}
+
+.amount-container select {
+    margin: 0 2px;
+    width: 40%;
+    background: white;
+    border-radius: 5px;
 }
 
 [type="file"] {

@@ -34,10 +34,13 @@
 }
 
 @keyframes hide-notification {
-    from {
+    0% {
         right: 10px;
     }
-    to {
+    10% {
+        right: 30px;
+    }
+    100% {
         right: -100%;
     }
 }

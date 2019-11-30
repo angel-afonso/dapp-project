@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       web3: null,
       ipfs: null,
-      newFile: false,
+      newFile: true,
       contract: null,
       accounts: [],
     };

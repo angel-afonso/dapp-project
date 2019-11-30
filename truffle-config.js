@@ -1,8 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  // See <http://truffleframework.com/docs/advanced/configuration>
-  // to customize your Truffle configuration!
   contracts_build_directory: path.join(__dirname, "app/src/contracts"),
   networks: {
     development: {
@@ -11,5 +9,13 @@ module.exports = {
       network_id: '*'
     }
   },
-  plugins: ["solidity-coverage"]
-};
+  compilers: {
+    solc: {
+      settings: {
+        optimizer: {
+          enabled: true,
+        }
+      }
+    }
+  }
+}

@@ -24,4 +24,12 @@
     align-items: center;
 }
 
+.dots-container {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 /* 100% */
