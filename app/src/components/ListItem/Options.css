@@ -12,6 +12,8 @@
     padding: 10px;
     cursor: pointer;
     border-radius: 5px;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
 }
 
 .item-options p:hover {

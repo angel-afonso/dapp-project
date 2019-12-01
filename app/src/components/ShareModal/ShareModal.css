@@ -1,0 +1,104 @@
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000091;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share-modal__container {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 20px;
+    width: 40%;
+    max-width: 330px;
+    min-width: 230px;
+    border-radius: 10px;
+}
+
+.share-modal__input-container {
+    display: flex;
+    padding: 10px 0;
+    flex-direction: column;
+    max-height: 350px;
+    overflow-y: scroll;
+}
+
+.share-modal__input-container input {
+    padding: 4px;
+    border-radius: 4px;
+    width: 85%;
+    margin: 4px;
+    border: 1px solid #c0c0c0;
+}
+
+.share-modal__buttons {
+    display: flex;
+    padding: 0 4px;
+}
+
+.share-modal__buttons button {
+    margin: 4px 2px;
+}
+
+.share-modal__accept-plus {
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 17px;
+    background: white;
+    border: 1px solid gray;
+    font-weight: bolder;
+}
+
+.share-modal__accept-btn {
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: white;
+    font-size: 17px;
+    border: 1px solid gray;
+}
+
+.share-modal__input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.share-modal__input-wrapper .close {
+    background-color: white;
+    border-radius: 50%;
+    padding: 0px 6px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.share-modal__close-container {
+    position: relative;
+    left: 103%;
+    top: -30px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    text-align: center;
+    background: #b1b1b1;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.share-modal__input-wrapper .close:hover {
+    background-color: #b5b5b5;
+}

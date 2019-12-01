@@ -16,7 +16,7 @@ contract Storage is ArrayRemovetor {
     File[] private files;
 
     mapping(address => string[]) private hashes;
-    mapping(string => address[]) private hashShared;
+    mapping(uint => address[]) private sharedWith;
     mapping(address => uint[]) private ownFiles;
 
     modifier onlyOwner(uint index) {
@@ -35,7 +35,6 @@ contract Storage is ArrayRemovetor {
     }
 
     function add(string memory hash, uint amount, string memory title, address[] memory shareWith) public {
-        hashShared[hash] = shareWith;
         uint index = files.push(File(msg.sender, hash, amount, title)) - 1;
         for(uint32 i; i < shareWith.length; i++){
             files[index].sharedWith[shareWith[i]] = true;
@@ -46,28 +45,39 @@ contract Storage is ArrayRemovetor {
         emit StoredFile(msg.sender, index);
     }
 
+    function setAmount(uint index, uint amount) public onlyOwner(index) {
+        files[amount].amount = amount;
+    }
+
     function edit(string memory title, uint amount, uint index) public {
         files[index].title = title;
         files[index].amount = amount;
     }
 
-    function addAddressToShare(address user, uint index) public onlyOwner(index) {
-        files[index].sharedWith[user] = true;
-        hashShared[files[index].hash].push(user);
+    function getFileSharedAddresses(uint index) public view onlyOwner(index) returns(address[] memory) {
+        return sharedWith[index];
     }
 
-    function removeAddressToShare(address user, uint index) public onlyOwner(index) {
-        delete files[index].sharedWith[user];
-        for (uint i = 0; i < hashShared[files[index].hash].length; i++) {
-            if(hashShared[files[index].hash][i] == user) {
-                hashShared[files[index].hash] = removeAddress(i, hashShared[files[index].hash]);
-                return;
+    function addAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
+        for (uint i = 0; i < users.length; i++) {
+            files[index].sharedWith[users[i]] = true;
+            sharedWith[index] = users;
+        }
+    }
+
+    function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
+        for (uint i = 0; i < users.length; i++) {
+        delete files[index].sharedWith[users[i]];
+            for (uint j = 0; j < sharedWith[index].length; j++) {
+                if(sharedWith[index][j] == users[i]) {
+                    sharedWith[index] = removeAddress(j, sharedWith[index]);
+                    return;
+                }
             }
         }
     }
 
     function deleteFile(uint index) public onlyOwner(index) {
-        delete hashShared[files[index].hash];
         delete files[index];
         hashes[msg.sender] = removeString(index, hashes[msg.sender]);
         ownFiles[msg.sender] = removeUint(index, ownFiles[msg.sender]);

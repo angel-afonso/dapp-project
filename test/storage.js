@@ -101,4 +101,17 @@ contract("Storage", accounts => {
             storageInstance.viewFile(0, { from: accounts[0] })
         );
     });
+
+    it('Should change file amount', async () => {
+        await storageInstance.add(`0x${'0'.repeat(10)}`, 1000, 'test file', [accounts[2]], { from: accounts[0] });
+        truffleAssert.passes(storageInstance.setAmount(0, 10, { from: accounts[0] }))
+        let result = await storageInstance.getFile.call(0, { from: accounts[0] });
+        assert.equal(result[2], 10);
+
+    });
+
+    it('Should fail trying to change file amount', async () => {
+        await storageInstance.add(`0x${'0'.repeat(10)}`, 1000, 'test file', [accounts[2]], { from: accounts[0] });
+        truffleAssert.passes(storageInstance.setAmount(0, 10, { from: accounts[1] }))
+    });
 });

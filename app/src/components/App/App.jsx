@@ -6,9 +6,11 @@ import StorageContract from '../../contracts/Storage.json';
 import Routes from "../Routes/Routes";
 import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import AddFile from "../AddFile/AddFile";
+import ShareModal from "../ShareModal/ShareModal";
 import { connect } from "react-redux";
 import { setContent } from "../../actions/contract";
 import "./App.css";
+import PopUp from "../PopUp/PopUp";
 
 class App extends Component {
   constructor() {
@@ -16,7 +18,7 @@ class App extends Component {
     this.state = {
       web3: null,
       ipfs: null,
-      newFile: true,
+      newFile: false,
       contract: null,
       accounts: [],
     };
@@ -53,11 +55,13 @@ class App extends Component {
 
   render() {
     const { newFile } = this.state;
-    const { web3 } = this.props;
+    const { web3, notification, share } = this.props;
 
     return !web3 ? <Loader /> : (
       <div className="app">
         {newFile && <AddFile closeModal={this.closeUploadModal} />}
+        {share && <ShareModal />}
+        {notification && <PopUp />}
         <div className="app__sidebar">
           <div className="app__logo">
             <Logo />
@@ -76,6 +80,8 @@ class App extends Component {
 
 export default connect((state) => ({
   web3: state.contract.web3,
+  notification: state.ui.showNotification,
+  share: state.ui.showShareModal,
 }), {
   setContent
 })(App);

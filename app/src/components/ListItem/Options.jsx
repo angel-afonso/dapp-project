@@ -9,7 +9,7 @@ export default class Options extends React.Component {
 
     onSelect(e) {
         const { onSelect } = this.props;
-        onSelect(e.target.innerText);
+        onSelect(e.target.innerText.toLowerCase());
     }
 
     render() {

@@ -3,6 +3,7 @@ import "./ListItem.css";
 import { connect } from "react-redux";
 import { ReactComponent as Dots } from "../../assets/img/three-dots.svg"
 import Options from "./Options";
+import { showShareModal } from "../../actions/ui";
 
 class ListItem extends React.Component {
     constructor() {
@@ -15,6 +16,7 @@ class ListItem extends React.Component {
         this.optionsRef = React.createRef();
         this.closeOptions = this.closeOptions.bind(this);
         this.showOptions = this.showOptions.bind(this);
+        this.selectOption = this.selectOption.bind(this);
     }
 
     showOptions() {
@@ -29,8 +31,10 @@ class ListItem extends React.Component {
         }
     }
 
-    selectOption(e) {
-
+    selectOption(value) {
+        try {
+            this.props[value](this.props.index);
+        } catch (error) { }
     }
 
     async componentDidMount() {
@@ -60,4 +64,4 @@ class ListItem extends React.Component {
 export default connect((state) => ({
     storage: state.contract.storage,
     accounts: state.contract.accounts,
-}), null)(ListItem);
+}), { share: showShareModal })(ListItem);
