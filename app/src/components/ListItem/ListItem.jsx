@@ -70,7 +70,7 @@ class ListItem extends React.Component {
             <div className="item-card">
                 <div className="item-card__container">
                     <div className="item-card__image-container" >
-                        {/* {this.state.loading ? <Loader /> : <Pdf />} */}
+                        {this.state.loading ? <Loader /> : null}
                     </div>
                     <div className="item-card__info">
                         <p>{this.state.name}</p>

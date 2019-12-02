@@ -53,13 +53,17 @@ contract Storage is ArrayRemovetor {
         return sharedWith[index];
     }
 
-    function addAddressToShare(address[] memory users, uint index, uint amount) public onlyOwner(index) {
+    function addAddressToShare(address[] memory users, uint index, uint amount,  address[] memory deleteUsers) public onlyOwner(index) {
         for (uint i = 0; i < users.length; i++) {
-            files[index].sharedWith[users[i]] = true;
-            sharedWith[index] = users;
-            addressesWithShares[users[i]].push(index);
+            if(!files[index].sharedWith[users[i]]) {
+                addressesWithShares[users[i]].push(index);
+                files[index].sharedWith[users[i]] = true;
+                sharedWith[index].push(users[i]);
+            }
         }
+        removeAddressToShare(deleteUsers, index);
         files[index].amount = amount;
+        sharedWith[index] = users;
     }
 
     function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
@@ -93,6 +97,10 @@ contract Storage is ArrayRemovetor {
 
     function getFile(uint index) public view onlyOwner(index) returns(string memory, string memory, uint amount){
         return (files[index].hash, files[index].title, files[index].amount);
+    }
+
+    function filePreview(uint index) public view onlyShared(index) returns(string memory, uint amount) {
+            return (files[index].title, files[index].amount);
     }
 
     function viewFile(uint index) public payable onlyShared(index) validAmount(index) returns (string memory, string memory, uint amount){

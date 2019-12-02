@@ -15,6 +15,7 @@ class SharedFiles extends React.Component {
     async componentDidMount() {
         const { accounts, storage, setIndexes } = this.props;
         const indexes = await storage.methods.getSharedIndexes().call({ from: accounts[0] });
+        console.log(indexes);
         setIndexes(indexes);
     }
 
