@@ -16,6 +16,7 @@ export default class Options extends React.Component {
         return (
             <div ref={this.props.divRef} className="item-options">
                 <p onClick={this.onSelect}>Share</p>
+                <p onClick={this.onSelect}>Download</p>
                 <p onClick={this.onSelect}>Delete</p>
             </div>
         )

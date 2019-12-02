@@ -6,12 +6,7 @@ import { showNotification, closeShareModal } from "../../actions/ui";
 import Loader from "../Loader/Loader";
 import "./ShareModal.css";
 
-const currency = {
-    wei: new BigNumber(10 ** 18),
-    finney: new BigNumber(10 ** 15),
-    ether: new BigNumber(1),
-};
-
+const ether = new BigNumber(10 ** 18)
 
 class ShareModal extends React.Component {
     constructor() {
@@ -21,7 +16,9 @@ class ShareModal extends React.Component {
                 disabled: false,
                 value: "",
             }],
+            hasAmount: false,
             loading: true,
+            amount: 0,
         };
         this.oldAddresses = [];
         this.addressesToRemove = [];
@@ -29,11 +26,14 @@ class ShareModal extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
         this.handleAccept = this.handleAccept.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
+        this.handleAmountChange = this.handleAmountChange.bind(this);
     }
 
     async componentDidMount() {
         const { index, storage, accounts } = this.props;
         this.oldAddresses = await storage.methods.getFileSharedAddresses(index).call({ from: accounts[0] });
+        let { 2: amount } = await storage.methods.getFile(index).call({ from: accounts[0] });
         this.setState({
             addresses: this.oldAddresses.length > 0 ? [...this.oldAddresses.map((value) => ({
                 disabled: true,
@@ -41,8 +41,14 @@ class ShareModal extends React.Component {
             })), { disabled: false, value: "" }] : [{
                 disabled: false,
                 value: "",
-            }], loading: false
+            }], loading: false,
+            amount: ether.dividedBy(amount),
+            hasAmount: amount > 0,
         })
+    }
+
+    handleCheck({ target }) {
+        this.setState({ hasAmount: target.checked });
     }
 
     addInput() {
@@ -60,10 +66,20 @@ class ShareModal extends React.Component {
         }
     }
 
+    handleAmountChange({ target }) {
+        this.setState({ [target.name]: target.value });
+    }
+
     async handleAccept() {
         const { accounts, storage, index, showNotification } = this.props;
         this.setState({ loading: true });
-        await storage.methods.addAddressToShare(this.state.addresses, index.toString()).send({ from: accounts[0] });
+        await storage.methods.addAddressToShare(
+            this.state.addresses
+                .map((address) => address.value)
+                .filter((address) => address !== ""),
+            index.toString(),
+            ether.multipliedBy(this.state.amount).toString()
+        ).send({ from: accounts[0] });
         this.setState({ loading: false });
         showNotification("File shared successfully")
     }
@@ -103,6 +119,19 @@ class ShareModal extends React.Component {
                                     }
                                 </div>
                             ))
+                        }
+                    </div>
+                    <div className="amount-container">
+                        <div className="amout__check-container">
+                            <label className="container">Has amount
+                                    <input type="checkbox" name="hasAmount" checked={this.state.hasAmount} onChange={this.handleCheck} />
+                                <span className="checkmark"></span>
+                            </label>
+                        </div>
+                        {
+                            this.state.hasAmount && <div className="amount-input-wrapper">
+                                <input type="number" name="amount" className="amount-input" value={this.state.amount} onChange={this.handleAmountChange} />
+                            </div>
                         }
                     </div>
                     <div className="share-modal__buttons">

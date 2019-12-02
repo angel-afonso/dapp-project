@@ -53,12 +53,13 @@ contract Storage is ArrayRemovetor {
         return sharedWith[index];
     }
 
-    function addAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
+    function addAddressToShare(address[] memory users, uint index, uint amount) public onlyOwner(index) {
         for (uint i = 0; i < users.length; i++) {
             files[index].sharedWith[users[i]] = true;
             sharedWith[index] = users;
             addressesWithShares[users[i]].push(index);
         }
+        files[index].amount = amount;
     }
 
     function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {

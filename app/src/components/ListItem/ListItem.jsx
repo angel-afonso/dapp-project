@@ -1,9 +1,14 @@
 import React from 'react';
 import "./ListItem.css";
 import { connect } from "react-redux";
-import { ReactComponent as Dots } from "../../assets/img/three-dots.svg"
+import { ReactComponent as Dots } from "../../assets/img/three-dots.svg";
+import { ReactComponent as Image } from "../../assets/img/image.svg";
+import { ReactComponent as Pdf } from "../../assets/img/PDF.svg";
+import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
+import { ReactComponent as Word } from "../../assets/img/WORD.svg";
 import Options from "./Options";
 import { showShareModal, showDeleteModal } from "../../actions/ui";
+import Loader from '../Loader/Loader';
 
 class ListItem extends React.Component {
     constructor() {
@@ -31,8 +36,18 @@ class ListItem extends React.Component {
         }
     }
 
-    selectOption(value) {
+    async selectOption(value) {
+        const { storage, accounts, index, ipfs } = this.props;
         try {
+            if (value === "download") {
+                const { 0: hash } = await storage.methods.getFile(index).call({ from: accounts[0] });
+                const files = await ipfs.get(hash)
+                console.log(files)
+                files.forEach((file) => {
+                    this.download(files.content);
+                })
+                return;
+            }
             this.props[value](this.props.index);
         } catch (error) { }
     }
@@ -47,7 +62,9 @@ class ListItem extends React.Component {
         return (
             <div className="item-card">
                 <div className="item-card__container">
-                    <div className="item-card__image-container" />
+                    <div className="item-card__image-container" >
+                        {/* {this.state.loading ? <Loader /> : <Pdf />} */}
+                    </div>
                     <div className="item-card__info">
                         <p>{this.state.name}</p>
                         <div className="dots-container" onClick={this.showOptions}>
@@ -63,5 +80,6 @@ class ListItem extends React.Component {
 
 export default connect((state) => ({
     storage: state.contract.storage,
+    ipfs: state.contract.ipfs,
     accounts: state.contract.accounts,
 }), { share: showShareModal, delete: showDeleteModal })(ListItem);

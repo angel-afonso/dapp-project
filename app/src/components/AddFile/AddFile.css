@@ -77,26 +77,6 @@
     margin: 5px 0;
 }
 
-.amount-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.amount-input {
-    width: 60%;
-    margin: 0 2px;
-    padding: 4px;
-    border-radius: 5px;
-    border: 1px solid #c0c0c0;
-}
-
-.amount-container select {
-    margin: 0 2px;
-    width: 40%;
-    background: white;
-    border-radius: 5px;
-}
-
 [type="file"] {
     border: 0;
     clip: rect(0, 0, 0, 0);
