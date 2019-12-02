@@ -56,7 +56,7 @@ export default connect((state) => ({
     storage: state.contract.storage,
     accounts: state.contract.accounts,
     index: state.ui.deleteIndex
-}), { showNotification, closeDeleteModal, updateIndexes, showNotification })(DeleteModal);
+}), { showNotification, closeDeleteModal, updateIndexes })(DeleteModal);
 
 
 
