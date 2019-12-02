@@ -15,7 +15,7 @@ contract Storage is ArrayRemovetor {
 
     File[] private files;
 
-    mapping(address => string[]) private hashes;
+    mapping(address => uint[]) private addressesWithShares;
     mapping(uint => address[]) private sharedWith;
     mapping(address => uint[]) private ownFiles;
 
@@ -34,14 +34,9 @@ contract Storage is ArrayRemovetor {
         _;
     }
 
-    function add(string memory hash, uint amount, string memory title, address[] memory shareWith) public {
+    function add(string memory hash, uint amount, string memory title) public {
         uint index = files.push(File(msg.sender, hash, amount, title)) - 1;
-        for(uint32 i; i < shareWith.length; i++){
-            files[index].sharedWith[shareWith[i]] = true;
-        }
-
         ownFiles[msg.sender].push(index);
-        hashes[msg.sender].push(hash);
         emit StoredFile(msg.sender, index);
     }
 
@@ -62,6 +57,7 @@ contract Storage is ArrayRemovetor {
         for (uint i = 0; i < users.length; i++) {
             files[index].sharedWith[users[i]] = true;
             sharedWith[index] = users;
+            addressesWithShares[users[i]].push(index);
         }
     }
 
@@ -75,11 +71,22 @@ contract Storage is ArrayRemovetor {
                 }
             }
         }
+
+        for (uint i = 0; i < sharedWith[index].length; i++) {
+            for (uint j = 0; j < addressesWithShares[sharedWith[index][i]].length; j++) {
+                addressesWithShares[sharedWith[index][i]] = removeUint(j, addressesWithShares[sharedWith[index][i]]);
+            }
+        }
     }
 
     function deleteFile(uint index) public onlyOwner(index) {
         delete files[index];
-        hashes[msg.sender] = removeString(index, hashes[msg.sender]);
+        for (uint i = 0; i < sharedWith[index].length; i++) {
+            for (uint j = 0; j < addressesWithShares[sharedWith[index][i]].length; j++) {
+                addressesWithShares[sharedWith[index][i]] = removeUint(j, addressesWithShares[sharedWith[index][i]]);
+            }
+        }
+        delete sharedWith[index];
         ownFiles[msg.sender] = removeUint(index, ownFiles[msg.sender]);
     }
 
@@ -94,5 +101,9 @@ contract Storage is ArrayRemovetor {
 
     function getIndexes() public view returns (uint[] memory) {
         return ownFiles[msg.sender];
+    }
+
+    function getSharedIndexes() public view returns (uint[] memory) {
+        return addressesWithShares[msg.sender];
     }
 }

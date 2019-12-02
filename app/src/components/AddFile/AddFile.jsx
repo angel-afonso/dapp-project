@@ -42,7 +42,7 @@ class AddFile extends React.Component {
                 await storage.methods
                     .add(result[0].path,
                         0,
-                        this.state.name, [])
+                        this.state.name)
                     .send({ from: accounts[0] });
 
                 updateIndexes(storage, accounts[0]);
