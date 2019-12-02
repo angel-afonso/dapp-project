@@ -3,7 +3,7 @@ import "./ListItem.css";
 import { connect } from "react-redux";
 import { ReactComponent as Dots } from "../../assets/img/three-dots.svg"
 import Options from "./Options";
-import { showShareModal } from "../../actions/ui";
+import { showShareModal, showDeleteModal } from "../../actions/ui";
 
 class ListItem extends React.Component {
     constructor() {
@@ -64,4 +64,4 @@ class ListItem extends React.Component {
 export default connect((state) => ({
     storage: state.contract.storage,
     accounts: state.contract.accounts,
-}), { share: showShareModal })(ListItem);
+}), { share: showShareModal, delete: showDeleteModal })(ListItem);

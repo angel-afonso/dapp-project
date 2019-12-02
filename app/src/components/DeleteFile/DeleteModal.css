@@ -1,0 +1,70 @@
+.delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000091;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-modal__container {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 20px;
+    width: 40%;
+    max-width: 330px;
+    min-width: 230px;
+    border-radius: 10px;
+}
+
+.delete-modal__input-wrapper .close {
+    background-color: white;
+    border-radius: 50%;
+    padding: 0px 6px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+.delete-modal__close-container {
+    position: relative;
+    left: 103%;
+    top: -30px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    text-align: center;
+    background: #b1b1b1;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-modal__input-wrapper .close:hover {
+    background-color: #b5b5b5;
+}
+
+.delete__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 15px 0;
+}
+
+.delete__buttons button {
+    padding: 5px 15px;
+    border: 1px solid gray;
+    background: white;
+    border-radius: 5px;
+    font-size: 17px;
+}

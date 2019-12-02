@@ -39,6 +39,12 @@ export default function (state = initialState, action) {
                 showShareModal: false,
                 shareIndex: null,
             }
+        case ACTIONS.CLOSE_DELETE_MODAL:
+            return {
+                ...state,
+                showDeleteModal: false,
+                deleteIndex: null,
+            }
         default:
             return state;
     }

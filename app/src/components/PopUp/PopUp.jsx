@@ -35,7 +35,7 @@ class PopUp extends React.Component {
         if (this.closeTimeout) window.clearTimeout(this.closeTimeout);
         this.closeTimeout = window.setTimeout(() => {
             hideNotification();
-        }, 1 * 1000);
+        }, 400);
     }
 
     render() {

@@ -1,16 +1,10 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
+import Loader from "../Loader/Loader";
 import { updateIndexes } from "../../actions/contract";
 import { showNotification } from "../../actions/ui";
-import { BigNumber } from "bignumber.js";
 import "./AddFile.css";
-
-const currency = {
-    wei: new BigNumber(10 ** 18),
-    finney: new BigNumber(10 ** 15),
-    ether: new BigNumber(1),
-};
 
 class AddFile extends React.Component {
     constructor() {
@@ -18,11 +12,11 @@ class AddFile extends React.Component {
         this.state = {
             file: "",
             name: "",
+            loading: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeFile = this.handleChangeFile.bind(this);
         this.uploadDocument = this.uploadDocument.bind(this);
-        this.close = this.close.bind(this);
     }
 
     handleChangeFile() {
@@ -42,6 +36,7 @@ class AddFile extends React.Component {
         const { ipfs, accounts, storage, updateIndexes, showNotification } = this.props;
 
         let fileReader = new FileReader();
+        this.setState({ loading: true });
         fileReader.onload = async () => {
             ipfs.add(Buffer.from(fileReader.result)).then(async (result) => {
                 await storage.methods
@@ -55,7 +50,8 @@ class AddFile extends React.Component {
                 this.setState({
                     file: "",
                     name: "",
-                    hasAmount: ""
+                    hasAmount: "",
+                    loading: false
                 });
 
                 showNotification("File uploaded successfully");
@@ -65,18 +61,14 @@ class AddFile extends React.Component {
         fileReader.readAsArrayBuffer(this.state.file);
     }
 
-    close() {
-        const { closeModal } = this.props;
-        closeModal();
-    }
-
     render() {
         return ReactDOM.createPortal(
             <div className="upload-modal">
                 <div className="upload-modal__container">
-                    <div className="close-container" onClick={this.close}>
+                    <div className="close-container" onClick={this.props.closeModal}>
                         <p>X</p>
                     </div>
+                    {this.state.loading && <Loader />}
                     <input type="file" id="file" onChange={this.handleChangeFile()} />
                     <label htmlFor="file" className="upload-input" >Select File</label>
                     <input type="text" name="name" value={this.state.name} className="name-input upload-input" disabled />

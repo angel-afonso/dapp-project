@@ -7,6 +7,7 @@ import Routes from "../Routes/Routes";
 import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 import AddFile from "../AddFile/AddFile";
 import ShareModal from "../ShareModal/ShareModal";
+import DeleteModal from "../DeleteFile/DeleteModal";
 import { connect } from "react-redux";
 import { setContent } from "../../actions/contract";
 import "./App.css";
@@ -61,6 +62,7 @@ class App extends Component {
       <div className="app">
         {newFile && <AddFile closeModal={this.closeUploadModal} />}
         {share && <ShareModal />}
+        {this.props.delete && <DeleteModal />}
         {notification && <PopUp />}
         <div className="app__sidebar">
           <div className="app__logo">
@@ -82,6 +84,7 @@ export default connect((state) => ({
   web3: state.contract.web3,
   notification: state.ui.showNotification,
   share: state.ui.showShareModal,
+  delete: state.ui.showDeleteModal,
 }), {
   setContent
 })(App);
