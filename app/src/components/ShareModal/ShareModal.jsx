@@ -62,7 +62,9 @@ class ShareModal extends React.Component {
 
     async handleAccept() {
         const { accounts, storage, index, showNotification } = this.props;
+        this.setState({ loading: true });
         await storage.methods.addAddressToShare(this.state.addresses, index.toString()).send({ from: accounts[0] });
+        this.setState({ loading: false });
         showNotification("File shared successfully")
     }
 
@@ -81,13 +83,14 @@ class ShareModal extends React.Component {
     }
 
     render() {
-        return this.state.loading ? <Loader /> : ReactDOM.createPortal(
+        return ReactDOM.createPortal(
             <div className="share-modal">
                 <div className="share-modal__container">
                     <div className="share-modal__close-container" onClick={this.props.closeShareModal}>
                         <p>X</p>
                     </div>
                     <p>Share with:</p>
+                    {this.state.loading && <Loader />}
                     <div className="share-modal__input-container">
                         {
                             this.state.addresses.map((input, index) => (
