@@ -23,6 +23,12 @@
   background-color: white;
 }
 
-.options__item--new {
-  background-color: #abdbe6;
+.app__options {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__options a {
+  text-decoration: unset;
+  text-align: center;
 }

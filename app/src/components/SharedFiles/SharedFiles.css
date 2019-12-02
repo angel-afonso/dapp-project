@@ -1,0 +1,22 @@
+a {
+    color: black;
+}
+
+.sharedfiles__item-view {
+    width: 85%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.sharedfiles__items-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sharedfiles__item {
+    margin: 20px;
+}

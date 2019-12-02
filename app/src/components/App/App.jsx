@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import Loader from '../Loader/Loader';
 import Ipfs from 'ipfs';
 import { getWeb3 } from '../../utils/getWeb3';
@@ -60,21 +61,23 @@ class App extends Component {
 
     return !web3 ? <Loader /> : (
       <div className="app">
-        {newFile && <AddFile closeModal={this.closeUploadModal} />}
-        {share && <ShareModal />}
-        {this.props.delete && <DeleteModal />}
-        {notification && <PopUp />}
-        <div className="app__sidebar">
-          <div className="app__logo">
-            <Logo />
+        <Router>
+          {newFile && <AddFile closeModal={this.closeUploadModal} />}
+          {share && <ShareModal />}
+          {this.props.delete && <DeleteModal />}
+          {notification && <PopUp />}
+          <div className="app__sidebar">
+            <div className="app__logo">
+              <Logo />
+            </div>
+            <div className="app__options">
+              <Link className="options__item--new" to="/">New</Link>
+              <Link className="options__item" to="/shared">Shared</Link>
+              <button className="options__item" onClick={this.openUploadModal}>upload</button>
+            </div>
           </div>
-          <div className="app__options">
-            <button className="options__item--new" onClick={this.openUploadModal}>New</button>
-            <button className="options__item">Shared</button>
-            <button className="options__item">upload</button>
-          </div>
-        </div>
-        <Routes />
+          <Routes />
+        </Router>
       </div>
     );
   }

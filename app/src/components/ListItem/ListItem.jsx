@@ -18,6 +18,7 @@ class ListItem extends React.Component {
             loading: true,
             showOptions: false
         }
+        this.amount = 0;
         this.optionsRef = React.createRef();
         this.closeOptions = this.closeOptions.bind(this);
         this.showOptions = this.showOptions.bind(this);
@@ -53,7 +54,13 @@ class ListItem extends React.Component {
     }
 
     async componentDidMount() {
-        const { storage, accounts, index } = this.props;
+        const { storage, accounts, index, shared } = this.props;
+        if (shared) {
+            const data = await storage.methods.filePreview(index).call({ from: accounts[0] });
+            this.setState({ name: data[0], loading: false });
+            this.amount = data[1];
+            return;
+        }
         const data = await storage.methods.getFile(index).call({ from: accounts[0] });
         this.setState({ name: data[1], loading: false });
     }
@@ -70,7 +77,7 @@ class ListItem extends React.Component {
                         <div className="dots-container" onClick={this.showOptions}>
                             <Dots />
                         </div>
-                        {this.state.showOptions && <Options onSelect={this.selectOption} divRef={this.optionsRef} />}
+                        {this.state.showOptions && <Options shared={this.props.shared} onSelect={this.selectOption} divRef={this.optionsRef} />}
                     </div>
                 </div>
             </div>

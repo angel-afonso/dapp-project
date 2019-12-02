@@ -14,7 +14,7 @@ class SharedFiles extends React.Component {
 
     async componentDidMount() {
         const { accounts, storage, setIndexes } = this.props;
-        const indexes = await storage.methods.getIndexes().call({ from: accounts[0] });
+        const indexes = await storage.methods.getSharedIndexes().call({ from: accounts[0] });
         setIndexes(indexes);
     }
 
@@ -22,13 +22,13 @@ class SharedFiles extends React.Component {
         const { indexes } = this.props;
         return (
             <div className="sharedfiles__item-view">
-                <h3>My Documents</h3>
+                <h3>Shared with me:</h3>
                 <div className="sharedfiles__items-container">
                     {
                         indexes.map((index) => {
                             return (
                                 <div key={index} className="sharedfiles__item">
-                                    <ListItem index={index} />
+                                    <ListItem shared index={index} />
                                 </div>)
                         })
                     }

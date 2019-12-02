@@ -42,7 +42,7 @@ class ShareModal extends React.Component {
                 disabled: false,
                 value: "",
             }], loading: false,
-            amount: ether.dividedBy(amount),
+            amount: new BigNumber(amount).dividedBy(ether).toString(),
             hasAmount: amount > 0,
         })
     }
@@ -60,7 +60,7 @@ class ShareModal extends React.Component {
     handleChange(index) {
         return ({ target }) => {
             this.setState((state) => {
-                state.addresses[index] = target.value;
+                state.addresses[index].value = target.value;
                 return state;
             });
         }
@@ -78,7 +78,7 @@ class ShareModal extends React.Component {
                 .map((address) => address.value)
                 .filter((address) => address !== ""),
             index.toString(),
-            ether.multipliedBy(this.state.amount).toString()
+            new BigNumber(this.state.amount).multipliedBy(ether).toString()
         ).send({ from: accounts[0] });
         this.setState({ loading: false });
         showNotification("File shared successfully")
