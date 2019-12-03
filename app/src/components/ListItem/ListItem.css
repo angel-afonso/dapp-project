@@ -32,4 +32,15 @@
     cursor: pointer;
 }
 
+.item-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+
+.item-dots {
+    display: flex;
+}
+
 /* 100% */

@@ -18,9 +18,9 @@ class ListItem extends React.Component {
         this.state = {
             name: "",
             loading: true,
-            showOptions: false
+            showOptions: false,
+            amount: 0,
         }
-        this.amount = 0;
         this.optionsRef = React.createRef();
         this.closeOptions = this.closeOptions.bind(this);
         this.showOptions = this.showOptions.bind(this);
@@ -45,8 +45,8 @@ class ListItem extends React.Component {
             if (value === "download") {
                 let hash;
                 if (shared) {
-                    const data = await storage.methods.viewFile(index).call({ from: accounts[0], value: this.amount });
-                    console.log(await storage.methods.viewFile(index).encodeABI());
+                    await storage.methods.viewFile(index).send({ from: accounts[0], value: this.state.amount });
+                    const data = await storage.methods.viewFile(index).call({ from: accounts[0], value: this.state.amount });
                     hash = data[0];
                 } else {
                     const data = await storage.methods.getFile(index).call({ from: accounts[0] });
@@ -73,8 +73,7 @@ class ListItem extends React.Component {
         const { storage, accounts, index, shared } = this.props;
         if (shared) {
             const data = await storage.methods.filePreview(index).call({ from: accounts[0] });
-            this.setState({ name: data[0], loading: false });
-            this.amount = data[1];
+            this.setState({ name: data[0], loading: false, amount: data[1] });
             return;
         }
         const data = await storage.methods.getFile(index).call({ from: accounts[0] });
@@ -89,9 +88,12 @@ class ListItem extends React.Component {
                         {this.state.loading ? <Loader /> : null}
                     </div>
                     <div className="item-card__info">
-                        <p>{this.state.name}</p>
-                        <div className="dots-container" onClick={this.showOptions}>
-                            <Dots />
+                        <p className="item-name">{this.state.name}</p>
+                        <div className="item-dots">
+                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString()} eth</p>}
+                            <div className="dots-container" onClick={this.showOptions}>
+                                <Dots />
+                            </div>
                         </div>
                         {this.state.showOptions && <Options shared={this.props.shared} onSelect={this.selectOption} divRef={this.optionsRef} />}
                     </div>
