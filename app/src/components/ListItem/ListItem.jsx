@@ -71,13 +71,18 @@ class ListItem extends React.Component {
 
     async componentDidMount() {
         const { storage, accounts, index, shared } = this.props;
-        if (shared) {
-            const data = await storage.methods.filePreview(index).call({ from: accounts[0] });
-            this.setState({ name: data[0], loading: false, amount: data[1] });
-            return;
+        try {
+            if (shared) {
+                const data = await storage.methods.filePreview(index).call({ from: accounts[0] });
+                this.setState({ name: data[0], loading: false, amount: data[1] });
+                return;
+            }
+            const data = await storage.methods.getFile(index).call({ from: accounts[0] });
+            this.setState({ name: data[1], loading: false });
+        } catch (error) {
+            console.log(error);
+            this.setState({ loading: false });
         }
-        const data = await storage.methods.getFile(index).call({ from: accounts[0] });
-        this.setState({ name: data[1], loading: false });
     }
 
     render() {
@@ -85,7 +90,7 @@ class ListItem extends React.Component {
             <div className="item-card">
                 <div className="item-card__container">
                     <div className="item-card__image-container" >
-                        {this.state.loading ? <Loader /> : null}
+                        {this.state.loading ? <Loader onlyCircle /> : null}
                     </div>
                     <div className="item-card__info">
                         <p className="item-name">{this.state.name}</p>

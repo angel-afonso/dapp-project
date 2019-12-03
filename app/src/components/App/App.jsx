@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Loader from '../Loader/Loader';
 import Ipfs from 'ipfs';
 import { getWeb3 } from '../../utils/getWeb3';
@@ -31,19 +31,27 @@ class App extends Component {
 
   async componentDidMount() {
     const { setContent } = this.props;
-    let web3 = await getWeb3();
-    let ipfs = await Ipfs.create();
+    let web3
+    try {
+      web3 = await getWeb3();
+    } catch (error) {
+      console.log("no metamask");
+      return;
+    }
+    try {
+      let ipfs = await Ipfs.create();
+      const accounts = await web3.eth.getAccounts();
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = StorageContract.networks[networkId];
 
-    const accounts = await web3.eth.getAccounts();
-    const networkId = await web3.eth.net.getId();
-    const deployedNetwork = StorageContract.networks[networkId];
+      const contract = new web3.eth.Contract(
+        StorageContract.abi,
+        deployedNetwork && deployedNetwork.address,
+      );
 
-    const contract = new web3.eth.Contract(
-      StorageContract.abi,
-      deployedNetwork && deployedNetwork.address,
-    );
+      setContent(web3, ipfs, contract, accounts);
+    } catch (error) { console.log(error) }
 
-    setContent(web3, ipfs, contract, accounts);
   }
 
 
@@ -57,26 +65,24 @@ class App extends Component {
 
   render() {
     const { newFile } = this.state;
-    const { web3, notification, share } = this.props;
+    const { web3, notification, share, location: { pathname } } = this.props;
     return !web3 ? <Loader /> : (
       <div className="app">
-        <Router>
-          {newFile && <AddFile closeModal={this.closeUploadModal} />}
-          {share && <ShareModal />}
-          {this.props.delete && <DeleteModal />}
-          {notification && <PopUp />}
-          <div className="app__sidebar">
-            <div className="app__logo">
-              <Logo />
-            </div>
-            <div className="app__options">
-              <Link className="options__item--new" to="/">New</Link>
-              <Link className="options__item" to="/shared">Shared</Link>
-              <button className="options__item" onClick={this.openUploadModal}>upload</button>
-            </div>
+        {newFile && <AddFile closeModal={this.closeUploadModal} />}
+        {share && <ShareModal />}
+        {this.props.delete && <DeleteModal />}
+        {notification && <PopUp />}
+        <div className="app__sidebar">
+          <div className="app__logo">
+            <Logo />
           </div>
-          <Routes />
-        </Router>
+          <div className="app__options">
+            <Link className={"options__item--new " + (pathname === "/" ? "options__item--active" : "")} to="/">New</Link>
+            <Link className={"options__item " + (pathname === "/shared" ? "options__item--active" : "")} to="/shared">Shared</Link>
+            <button className="options__item" onClick={this.openUploadModal}>upload</button>
+          </div>
+        </div>
+        <Routes />
       </div>
     );
   }
@@ -89,4 +95,4 @@ export default connect((state) => ({
   delete: state.ui.showDeleteModal,
 }), {
   setContent
-})(App);
+})(withRouter(App));

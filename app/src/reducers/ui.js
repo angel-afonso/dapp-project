@@ -45,6 +45,12 @@ export default function (state = initialState, action) {
                 showDeleteModal: false,
                 deleteIndex: null,
             }
+        case ACTIONS.HIDE_NOTIFICATION:
+            return {
+                ...state,
+                showNotification: false,
+                notificationMessage: ""
+            }
         default:
             return state;
     }

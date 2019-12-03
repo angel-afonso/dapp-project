@@ -15,8 +15,12 @@ class Home extends React.Component {
 
     async componentDidMount() {
         const { accounts, storage, setIndexes } = this.props;
-        const indexes = await storage.methods.getIndexes().call({ from: accounts[0] });
-        setIndexes(indexes);
+        try {
+            const indexes = await storage.methods.getIndexes().call({ from: accounts[0] });
+            setIndexes(indexes);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {

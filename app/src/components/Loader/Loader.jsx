@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from "react-dom";
 import './Loader.css';
 
 function FullscreenWrapper({ children }) {
@@ -23,9 +24,9 @@ function Circle() {
 export default function Loader({ onlyCircle = false }) {
     return onlyCircle ? (
         <Circle />
-    ) : (
-            <FullscreenWrapper>
-                <Circle />
-            </FullscreenWrapper>
-        )
+    ) : ReactDOM.createPortal(
+        <FullscreenWrapper>
+            <Circle />
+        </FullscreenWrapper>
+        , document.body)
 }

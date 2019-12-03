@@ -40,15 +40,11 @@ contract Storage is ArrayRemovetor {
         emit StoredFile(msg.sender, index);
     }
 
-    // function setAmount(uint index, uint amount) public onlyOwner(index) {
-    //     files[amount].amount = amount;
-    // }
-
     function getFileSharedAddresses(uint index) public view onlyOwner(index) returns(address[] memory) {
         return sharedWith[index];
     }
 
-    function addAddressToShare(address[] memory users, uint index, uint amount/* ,  address[] memory deleteUsers */ ) public onlyOwner(index) {
+    function addAddressToShare(address[] memory users, uint index, uint amount,  address[] memory deleteUsers ) public onlyOwner(index) {
         for (uint i = 0; i < users.length; i++) {
             if(!files[index].sharedWith[users[i]]) {
                 files[index].sharedWith[users[i]] = true;
@@ -56,29 +52,29 @@ contract Storage is ArrayRemovetor {
                 addressesWithShares[users[i]].push(index);
             }
         }
-        // removeAddressToShare(deleteUsers, index);
+
+        if(deleteUsers.length > 0) {
+            for(uint i = 0; i < deleteUsers.length; i++) {
+                for (uint j = 0; j < sharedWith[index].length; j++) {
+                    if(sharedWith[index][j] == deleteUsers[i]) {
+                        sharedWith[index] = removeAddress(j, sharedWith[index]);
+                        break;
+                    }
+                }
+
+               for (uint j = 0; j < addressesWithShares[deleteUsers[i]].length; j++) {
+                   if(addressesWithShares[deleteUsers[i]][j] == index) {
+                       addressesWithShares[deleteUsers[i]] = removeUint(j, addressesWithShares[deleteUsers[i]]);
+                   }
+               }
+               if(files[index].sharedWith[users[i]]){
+                   files[index].sharedWith[users[i]] = false;
+               }
+            }
+        }
+
         files[index].amount = amount;
-        sharedWith[index] = users;
     }
-
-    // function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
-    //     for (uint i = 0; i < users.length; i++) {
-    //     delete files[index].sharedWith[users[i]];
-    //         for (uint j = 0; j < sharedWith[index].length; j++) {
-    //             if(sharedWith[index][j] == users[i]) {
-    //                 sharedWith[index] = removeAddress(j, sharedWith[index]);
-    //                 return;
-    //             }
-    //         }
-    //     }
-
-    //     for (uint i = 0; i < sharedWith[index].length; i++) {
-    //         for (uint j = 0; j < addressesWithShares[sharedWith[index][i]].length; j++) {
-    //             addressesWithShares[sharedWith[index][i]] = removeUint(j, addressesWithShares[sharedWith[index][i]]);
-    //         }
-    //     }
-    // }
-
     function deleteFile(uint index) public onlyOwner(index) {
         delete files[index];
         for (uint i = 0; i < sharedWith[index].length; i++) {

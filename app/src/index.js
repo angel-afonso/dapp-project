@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createPromise } from 'redux-promise-middleware';
+import { BrowserRouter as Router } from "react-router-dom";
 import rootReducer from "./reducers";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
@@ -25,7 +26,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </Provider>
     , document.getElementById('root'));
 
