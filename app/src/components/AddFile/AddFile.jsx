@@ -46,7 +46,6 @@ class AddFile extends React.Component {
                     .send({ from: accounts[0] });
 
                 updateIndexes(storage, accounts[0]);
-
                 this.setState({
                     file: "",
                     name: "",

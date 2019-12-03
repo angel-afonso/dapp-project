@@ -156,7 +156,7 @@ class ShareModal extends React.Component {
 export default connect((state) => ({
     storage: state.contract.storage,
     accounts: state.contract.accounts,
-    index: state.ui.shareIndex
+    index: state.ui.shareIndex,
 }), { showNotification, closeShareModal })(ShareModal);
 
 

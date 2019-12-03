@@ -9,12 +9,12 @@ class Home extends React.Component {
         super();
         this.state = {
             indexes: [],
+            test: "",
         }
     }
 
     async componentDidMount() {
         const { accounts, storage, setIndexes } = this.props;
-
         const indexes = await storage.methods.getIndexes().call({ from: accounts[0] });
         setIndexes(indexes);
     }

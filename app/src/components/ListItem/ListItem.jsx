@@ -41,13 +41,19 @@ class ListItem extends React.Component {
         const { storage, accounts, index, ipfs } = this.props;
         try {
             if (value === "download") {
-                const { 0: hash } = await storage.methods.getFile(index).call({ from: accounts[0] });
-                const files = await ipfs.get(hash)
-                console.log(files)
-                files.forEach((file) => {
-                    this.download(files.content);
-                })
+                const { 0: hash, 1: name } = await storage.methods.getFile(index).call({ from: accounts[0] });
+                ipfs.get(hash).then((files) => {
+                    const file = new Blob([files[0].content], { type: 'application/octet-binary' })
+                    const url = URL.createObjectURL(file);
+                    const link = document.createElement('a');
+                    link.href = url
+                    link.download = name;
+                    document.body.append(link);
+                    link.click();
+                    link.remove();
+                }).catch(console.log)
                 return;
+
             }
             this.props[value](this.props.index);
         } catch (error) { }
