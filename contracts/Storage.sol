@@ -40,14 +40,9 @@ contract Storage is ArrayRemovetor {
         emit StoredFile(msg.sender, index);
     }
 
-    function setAmount(uint index, uint amount) public onlyOwner(index) {
-        files[amount].amount = amount;
-    }
-
-    function edit(string memory title, uint amount, uint index) public {
-        files[index].title = title;
-        files[index].amount = amount;
-    }
+    // function setAmount(uint index, uint amount) public onlyOwner(index) {
+    //     files[amount].amount = amount;
+    // }
 
     function getFileSharedAddresses(uint index) public view onlyOwner(index) returns(address[] memory) {
         return sharedWith[index];
@@ -66,23 +61,23 @@ contract Storage is ArrayRemovetor {
         sharedWith[index] = users;
     }
 
-    function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
-        for (uint i = 0; i < users.length; i++) {
-        delete files[index].sharedWith[users[i]];
-            for (uint j = 0; j < sharedWith[index].length; j++) {
-                if(sharedWith[index][j] == users[i]) {
-                    sharedWith[index] = removeAddress(j, sharedWith[index]);
-                    return;
-                }
-            }
-        }
+    // function removeAddressToShare(address[] memory users, uint index) public onlyOwner(index) {
+    //     for (uint i = 0; i < users.length; i++) {
+    //     delete files[index].sharedWith[users[i]];
+    //         for (uint j = 0; j < sharedWith[index].length; j++) {
+    //             if(sharedWith[index][j] == users[i]) {
+    //                 sharedWith[index] = removeAddress(j, sharedWith[index]);
+    //                 return;
+    //             }
+    //         }
+    //     }
 
-        for (uint i = 0; i < sharedWith[index].length; i++) {
-            for (uint j = 0; j < addressesWithShares[sharedWith[index][i]].length; j++) {
-                addressesWithShares[sharedWith[index][i]] = removeUint(j, addressesWithShares[sharedWith[index][i]]);
-            }
-        }
-    }
+    //     for (uint i = 0; i < sharedWith[index].length; i++) {
+    //         for (uint j = 0; j < addressesWithShares[sharedWith[index][i]].length; j++) {
+    //             addressesWithShares[sharedWith[index][i]] = removeUint(j, addressesWithShares[sharedWith[index][i]]);
+    //         }
+    //     }
+    // }
 
     function deleteFile(uint index) public onlyOwner(index) {
         delete files[index];
