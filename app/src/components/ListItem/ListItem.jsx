@@ -8,8 +8,10 @@ import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
 import { ReactComponent as Word } from "../../assets/img/WORD.svg";
 import Options from "./Options";
 import { showShareModal, showDeleteModal } from "../../actions/ui";
+import { BigNumber } from "bignumber.js";
 import Loader from '../Loader/Loader';
 
+const ether = new BigNumber(10 ** 18)
 class ListItem extends React.Component {
     constructor() {
         super();
@@ -38,16 +40,24 @@ class ListItem extends React.Component {
     }
 
     async selectOption(value) {
-        const { storage, accounts, index, ipfs } = this.props;
+        const { storage, accounts, index, ipfs, shared } = this.props;
         try {
             if (value === "download") {
-                const { 0: hash, 1: name } = await storage.methods.getFile(index).call({ from: accounts[0] });
+                let hash;
+                if (shared) {
+                    const data = await storage.methods.viewFile(index).call({ from: accounts[0], value: this.amount });
+                    console.log(await storage.methods.viewFile(index).encodeABI());
+                    hash = data[0];
+                } else {
+                    const data = await storage.methods.getFile(index).call({ from: accounts[0] });
+                    hash = data[0];
+                }
                 ipfs.get(hash).then((files) => {
                     const file = new Blob([files[0].content], { type: 'application/octet-binary' })
                     const url = URL.createObjectURL(file);
                     const link = document.createElement('a');
                     link.href = url
-                    link.download = name;
+                    link.download = this.state.name;
                     document.body.append(link);
                     link.click();
                     link.remove();
@@ -56,7 +66,7 @@ class ListItem extends React.Component {
 
             }
             this.props[value](this.props.index);
-        } catch (error) { }
+        } catch (error) { console.log(error) }
     }
 
     async componentDidMount() {

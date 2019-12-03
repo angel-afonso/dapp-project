@@ -78,8 +78,8 @@ class ShareModal extends React.Component {
                 .map((address) => address.value)
                 .filter((address) => address !== ""),
             index.toString(),
-            new BigNumber(this.state.amount).multipliedBy(ether).toString(),
-            this.addressesToRemove
+            new BigNumber(this.state.amount).multipliedBy(ether).toString()/* ,
+            this.addressesToRemove */
         ).send({ from: accounts[0] });
         this.setState({ loading: false });
         showNotification("File shared successfully")

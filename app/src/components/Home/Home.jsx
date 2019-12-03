@@ -40,7 +40,6 @@ class Home extends React.Component {
 }
 
 export default connect((state) => ({
-    ipfs: state.contract.ipfs,
     storage: state.contract.storage,
     accounts: state.contract.accounts,
     indexes: state.contract.indexes,

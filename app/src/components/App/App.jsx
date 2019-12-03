@@ -58,7 +58,6 @@ class App extends Component {
   render() {
     const { newFile } = this.state;
     const { web3, notification, share } = this.props;
-
     return !web3 ? <Loader /> : (
       <div className="app">
         <Router>
