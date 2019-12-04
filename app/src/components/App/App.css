@@ -31,6 +31,16 @@ button.options__item {
   font-size: 16px;
   border: 1px solid #ababab;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 1px;
+}
+
+button.options__item svg {
+  width: 10%;
+  padding: 0 7px;
+  color: #4bae9b;
 }
 
 .app__options {
@@ -41,4 +51,5 @@ button.options__item {
 .app__options a {
   text-decoration: unset;
   text-align: center;
+  margin: 10px 0;
 }

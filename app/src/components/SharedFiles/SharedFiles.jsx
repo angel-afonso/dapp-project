@@ -11,7 +11,6 @@ class SharedFiles extends React.Component {
     }
 
     async componentDidUpdate(prevProps) {
-        const { accounts, storage, updateIndexes } = this.props;
         if (prevProps.accounts !== this.props.accounts) {
             const { accounts, storage, updateSharedIndexes } = this.props;
             updateSharedIndexes(storage, accounts[0]);
@@ -22,7 +21,7 @@ class SharedFiles extends React.Component {
         const { indexes } = this.props;
         return (
             <div className="sharedfiles__item-view">
-                <h3>Shared with me:</h3>
+                <h3 className="title">Shared with me:</h3>
                 <div className="sharedfiles__items-container">
                     {
                         indexes.map((index) => {

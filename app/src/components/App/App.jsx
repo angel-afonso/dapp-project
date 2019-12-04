@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { setContent, updateIndexes, setAccounts } from "../../actions/contract";
 import "./App.css";
 import PopUp from "../PopUp/PopUp";
+import { ReactComponent as Upload } from "../../assets/img/upload-solid.svg";
 
 class App extends Component {
   constructor() {
@@ -81,7 +82,7 @@ class App extends Component {
           <div className="app__options">
             <Link className={"options__item--new " + (pathname === "/" ? "options__item--active" : "")} to="/">New</Link>
             <Link className={"options__item " + (pathname === "/shared" ? "options__item--active" : "")} to="/shared">Shared</Link>
-            <button className="options__item" onClick={this.openUploadModal}>upload</button>
+            <button className="options__item" onClick={this.openUploadModal}><Upload />upload</button>
           </div>
         </div>
         <Routes />

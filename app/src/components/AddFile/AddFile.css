@@ -29,7 +29,7 @@
 }
 
 .upload-modal__accept-btn {
-    background-color: #abdbe6;
+    background-color: #4bae9b;
     border: unset;
     padding: 5px;
     font-size: 1.2em;
@@ -42,6 +42,7 @@
     border: 1px solid #c0c0c0 !important;
     box-shadow: unset;
     border-radius: 5px;
+    padding: 8px;
 }
 
 .amount-inputs-container {

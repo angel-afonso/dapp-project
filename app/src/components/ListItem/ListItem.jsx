@@ -95,7 +95,7 @@ class ListItem extends React.Component {
                     <div className="item-card__info">
                         <p className="item-name">{this.state.name}</p>
                         <div className="item-dots">
-                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString()} eth</p>}
+                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString() + "eth"}</p>}
                             <div className="dots-container" onClick={this.showOptions}>
                                 <Dots />
                             </div>
