@@ -32,7 +32,7 @@ class AddFile extends React.Component {
 
     uploadDocument() {
         if (!this.state.file) return;
-        const { ipfs, accounts, storage/* , updateIndexes */, showNotification } = this.props;
+        const { ipfs, accounts, storage, showNotification } = this.props;
 
         let fileReader = new FileReader();
         this.setState({ loading: true });
@@ -42,16 +42,16 @@ class AddFile extends React.Component {
                     .add(result[0].path,
                         0,
                         this.state.name)
-                    .send({ from: accounts[0] });
-
-                // updateIndexes(storage, accounts[0]);
-                this.setState({
-                    file: "",
-                    name: "",
-                    hasAmount: "",
-                    loading: false
-                });
-
+                    .send({ from: accounts[0] })
+                    .once("transactionHash", () => {
+                        this.setState({ loading: false }, () => showNotification("Wait until the transaction get mined"));
+                        this.setState({
+                            file: "",
+                            name: "",
+                            hasAmount: "",
+                            loading: false
+                        });
+                    });
                 showNotification("File uploaded successfully");
             });
         };

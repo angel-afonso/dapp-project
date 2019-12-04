@@ -7,7 +7,7 @@ import { ReactComponent as Dots } from "../../assets/img/three-dots.svg";
 // import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
 // import { ReactComponent as Word } from "../../assets/img/WORD.svg";
 import Options from "./Options";
-import { showShareModal, showDeleteModal } from "../../actions/ui";
+import { showShareModal, showDeleteModal, showNotification } from "../../actions/ui";
 import { BigNumber } from "bignumber.js";
 import Loader from '../Loader/Loader';
 
@@ -40,12 +40,14 @@ class ListItem extends React.Component {
     }
 
     async selectOption(value) {
-        const { storage, accounts, index, ipfs, shared } = this.props;
+        const { storage, accounts, index, ipfs, shared, showNotification } = this.props;
         try {
             if (value === "download") {
                 let hash;
                 if (shared) {
-                    await storage.methods.viewFile(index).send({ from: accounts[0], value: this.state.amount });
+                    await storage.methods.viewFile(index).send({ from: accounts[0], value: this.state.amount }).once("transactionHash", () => {
+                        showNotification("Wait until the transaction get mined");
+                    });
                     const data = await storage.methods.viewFile(index).call({ from: accounts[0], value: this.state.amount });
                     hash = data[0];
                 } else {
@@ -66,7 +68,12 @@ class ListItem extends React.Component {
 
             }
             this.props[value](this.props.index);
-        } catch (error) { console.log(error) }
+        } catch (error) {
+            if (error.code === 4001) {
+                showNotification("Denied transaction signature");
+            }
+            console.log(error)
+        }
     }
 
     async componentDidMount() {
@@ -95,7 +102,7 @@ class ListItem extends React.Component {
                     <div className="item-card__info">
                         <p className="item-name">{this.state.name}</p>
                         <div className="item-dots">
-                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString() + "eth"}</p>}
+                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString() + " eth"}</p>}
                             <div className="dots-container" onClick={this.showOptions}>
                                 <Dots />
                             </div>
@@ -112,4 +119,4 @@ export default connect((state) => ({
     storage: state.contract.storage,
     ipfs: state.contract.ipfs,
     accounts: state.contract.accounts,
-}), { share: showShareModal, delete: showDeleteModal })(ListItem);
+}), { share: showShareModal, delete: showDeleteModal, showNotification })(ListItem);

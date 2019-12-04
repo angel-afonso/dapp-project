@@ -24,6 +24,7 @@ class App extends Component {
       newFile: false,
       contract: null,
       accounts: [],
+      error: false,
     };
 
     this.closeUploadModal = this.closeUploadModal.bind(this);
@@ -36,7 +37,7 @@ class App extends Component {
     try {
       web3 = await getWeb3();
     } catch (error) {
-      console.log("no metamask");
+      this.setState({ error: true });
       return;
     }
     try {
@@ -53,7 +54,9 @@ class App extends Component {
       contract.events.StoredFile().on("data", () => { updateIndexes(contract, accounts[0]) });
       window.ethereum.on('accountsChanged', setAccounts);
       setContent(web3, ipfs, contract, accounts);
-    } catch (error) { console.log(error) }
+    } catch (error) {
+      this.setState({ error: true });
+    }
 
   }
 
@@ -67,8 +70,17 @@ class App extends Component {
   }
 
   render() {
-    const { newFile } = this.state;
+    const { newFile, error } = this.state;
     const { web3, notification, share, location: { pathname } } = this.props;
+    if (error) {
+      return (
+        <div className="errorContainer">
+          <Logo />
+          <h3 className="errorMessage">You need to have MetaMask installed to use the application</h3>
+        </div>
+      )
+    }
+
     return !web3 ? <Loader /> : (
       <div className="app">
         {newFile && <AddFile closeModal={this.closeUploadModal} />}
@@ -86,7 +98,7 @@ class App extends Component {
           </div>
         </div>
         <Routes />
-      </div>
+      </div >
     );
   }
 }
