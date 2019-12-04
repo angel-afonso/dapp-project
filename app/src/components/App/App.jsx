@@ -92,7 +92,7 @@ class App extends Component {
             <Logo />
           </div>
           <div className="app__options">
-            <Link className={"options__item--new " + (pathname === "/" ? "options__item--active" : "")} to="/">New</Link>
+            <Link className={"options__item--new " + (pathname === "/" ? "options__item--active" : "")} to="/">Files</Link>
             <Link className={"options__item " + (pathname === "/shared" ? "options__item--active" : "")} to="/shared">Shared</Link>
             <button className="options__item" onClick={this.openUploadModal}><Upload />upload</button>
           </div>

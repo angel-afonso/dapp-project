@@ -53,7 +53,7 @@ class ShareModal extends React.Component {
 
     addInput() {
         this.setState({
-            addresses: [...this.state.addresses, { disable: false, value: "" }],
+            addresses: [...this.state.addresses, { disabled: false, value: "" }],
         })
     }
 
@@ -70,19 +70,29 @@ class ShareModal extends React.Component {
         this.setState({ [target.name]: target.value });
     }
 
-    async handleAccept() {
+    handleAccept() {
         const { accounts, storage, index, showNotification } = this.props;
         this.setState({ loading: true });
-        await storage.methods.addAddressToShare(
+
+        storage.methods.addAddressToShare(
             this.state.addresses
                 .map((address) => address.value)
                 .filter((address) => address !== ""),
             index.toString(),
             new BigNumber(this.state.amount).multipliedBy(ether).toString(),
             this.addressesToRemove
-        ).send({ from: accounts[0] });
-        this.setState({ loading: false });
-        showNotification("File shared successfully")
+        ).send({ from: accounts[0] })
+            .once("transactionHash", () => {
+                this.setState({ loading: false });
+                showNotification("Wait until the transaction get mined");
+                this.props.closeShareModal();
+            }).once("error", () => {
+                showNotification("Transaction error")
+                this.setState({ loading: false });
+            }).then(() => {
+                showNotification("File shared successfully")
+            });
+
     }
 
     removeAddress(index) {

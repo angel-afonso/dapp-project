@@ -34,7 +34,7 @@ class Home extends React.Component {
         const { indexes } = this.props;
         return (
             <div className="home__item-view">
-                <h3 className="title">My Documents</h3>
+                <h3 className="title">My Files</h3>
                 <div className="home__items-container">
                     {
                         indexes.map((index) => {

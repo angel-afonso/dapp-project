@@ -2,14 +2,9 @@ import React from 'react';
 import "./ListItem.css";
 import { connect } from "react-redux";
 import { ReactComponent as Dots } from "../../assets/img/three-dots.svg";
-// import { ReactComponent as Image } from "../../assets/img/image.svg";
-// import { ReactComponent as Pdf } from "../../assets/img/PDF.svg";
-// import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
-// import { ReactComponent as Word } from "../../assets/img/WORD.svg";
 import Options from "./Options";
 import { showShareModal, showDeleteModal, showNotification } from "../../actions/ui";
 import { BigNumber } from "bignumber.js";
-import Loader from '../Loader/Loader';
 
 const ether = new BigNumber(10 ** 18)
 class ListItem extends React.Component {
@@ -46,7 +41,9 @@ class ListItem extends React.Component {
                 let hash;
                 if (shared) {
                     await storage.methods.viewFile(index).send({ from: accounts[0], value: this.state.amount }).once("transactionHash", () => {
-                        showNotification("Wait until the transaction get mined");
+                        showNotification("The download will start when the transaction get mined");
+                    }).once("error", () => {
+                        showNotification("Transaction failed");
                     });
                     const data = await storage.methods.viewFile(index).call({ from: accounts[0], value: this.state.amount });
                     hash = data[0];
@@ -96,18 +93,20 @@ class ListItem extends React.Component {
         return (
             <div className="item-card">
                 <div className="item-card__container" title={this.state.name}>
-                    <div className="item-card__image-container" >
-                        {this.state.loading ? <Loader onlyCircle /> : null}
-                    </div>
                     <div className="item-card__info">
-                        <p className="item-name">{this.state.name}</p>
-                        <div className="item-dots">
-                            {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString() + " eth"}</p>}
-                            <div className="dots-container" onClick={this.showOptions}>
-                                <Dots />
-                            </div>
-                        </div>
-                        {this.state.showOptions && <Options shared={this.props.shared} onSelect={this.selectOption} divRef={this.optionsRef} />}
+                        {
+                            !this.state.name ? <div className="item-placeholder" /> :
+                                <>
+                                    <p className="item-name">{this.state.name}</p>
+                                    <div className="item-dots">
+                                        {this.props.shared && <p>{new BigNumber(this.state.amount).dividedBy(ether).toString() + " eth"}</p>}
+                                        <div className="dots-container" onClick={this.showOptions}>
+                                            <Dots />
+                                        </div>
+                                    </div>
+                                    {this.state.showOptions && <Options shared={this.props.shared} onSelect={this.selectOption} divRef={this.optionsRef} />}
+                                </>
+                        }
                     </div>
                 </div>
             </div>

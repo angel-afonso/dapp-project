@@ -62,12 +62,12 @@ contract Storage is ArrayRemovetor {
                     }
                 }
 
-               for (uint j = 0; j < addressesWithShares[deleteUsers[i]].length; j++) {
-                   if(addressesWithShares[deleteUsers[i]][j] == index) {
-                       addressesWithShares[deleteUsers[i]] = removeUint(j, addressesWithShares[deleteUsers[i]]);
-                   }
-               }
-               if(files[index].sharedWith[users[i]]){
+               if(files[index].sharedWith[deleteUsers[i]]){
+                    for (uint j = 0; j < addressesWithShares[deleteUsers[i]].length; j++) {
+                        if(addressesWithShares[deleteUsers[i]][j] == index) {
+                            addressesWithShares[deleteUsers[i]] = removeUint(j, addressesWithShares[deleteUsers[i]]);
+                        }
+                    }
                    files[index].sharedWith[users[i]] = false;
                }
             }

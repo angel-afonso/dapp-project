@@ -18,11 +18,17 @@ class DeleteModal extends React.Component {
     async deleteFile() {
         const { storage, accounts, index, closeDeleteModal, updateIndexes, showNotification } = this.props;
         this.setState({ loading: true });
-        await storage.methods.deleteFile(index.toString()).send({ from: accounts[0] });
-        updateIndexes(storage, accounts[0])
-        this.setState({ loading: false });
-        showNotification("File deleted successfully");
-        closeDeleteModal();
+        storage.methods.deleteFile(index.toString()).send({ from: accounts[0] }).once("transactionHash", () => {
+            showNotification("Wait until the transaction get mined");
+            closeDeleteModal();
+            this.setState({ loading: false });
+        }).once("error", () => {
+            this.setState({ loading: false });
+            showNotification("Transaction error");
+        }).then(() => {
+            updateIndexes(storage, accounts[0])
+            showNotification("File deleted successfully");
+        });
     }
 
     render() {
@@ -47,7 +53,6 @@ class DeleteModal extends React.Component {
                 </div>
             </div>
             , document.body);
-
     }
 }
 
