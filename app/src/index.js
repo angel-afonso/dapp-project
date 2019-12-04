@@ -26,7 +26,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <Router basename="/ipns/QmWVg3Z4d49WFrmfAvTGjPm9UwTC1hydBECQrvfXRA9v1C">
             <App />
         </Router>
     </Provider>
