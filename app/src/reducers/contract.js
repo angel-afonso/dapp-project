@@ -6,6 +6,7 @@ const initialState = {
     storage: null,
     accounts: [],
     indexes: [],
+    sharedIndexes: [],
 };
 
 export default function (state = initialState, action) {
@@ -28,6 +29,16 @@ export default function (state = initialState, action) {
                 ...state,
                 indexes: action.payload,
             };
+        case ACTIONS.UPDATE_ACCOUNTS:
+            return {
+                ...state,
+                accounts: action.accounts,
+            }
+        case ACTIONS.UPDATE_SHARED_INDEXES + "_SUCCESS":
+            return {
+                ...state,
+                sharedIndexes: action.payload,
+            }
         default:
             return state;
     }

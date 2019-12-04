@@ -10,7 +10,7 @@ import AddFile from "../AddFile/AddFile";
 import ShareModal from "../ShareModal/ShareModal";
 import DeleteModal from "../DeleteFile/DeleteModal";
 import { connect } from "react-redux";
-import { setContent } from "../../actions/contract";
+import { setContent, updateIndexes, setAccounts } from "../../actions/contract";
 import "./App.css";
 import PopUp from "../PopUp/PopUp";
 
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { setContent } = this.props;
+    const { setContent, updateIndexes, setAccounts } = this.props;
     let web3
     try {
       web3 = await getWeb3();
@@ -49,6 +49,8 @@ class App extends Component {
         deployedNetwork && deployedNetwork.address,
       );
 
+      contract.events.StoredFile().on("data", () => { updateIndexes(contract, accounts[0]) });
+      window.ethereum.on('accountsChanged', setAccounts);
       setContent(web3, ipfs, contract, accounts);
     } catch (error) { console.log(error) }
 
@@ -94,5 +96,7 @@ export default connect((state) => ({
   share: state.ui.showShareModal,
   delete: state.ui.showDeleteModal,
 }), {
-  setContent
+  setContent,
+  updateIndexes,
+  setAccounts
 })(withRouter(App));

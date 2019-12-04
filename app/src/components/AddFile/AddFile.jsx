@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import Loader from "../Loader/Loader";
-import { updateIndexes } from "../../actions/contract";
 import { showNotification } from "../../actions/ui";
 import "./AddFile.css";
 
@@ -33,7 +32,7 @@ class AddFile extends React.Component {
 
     uploadDocument() {
         if (!this.state.file) return;
-        const { ipfs, accounts, storage, updateIndexes, showNotification } = this.props;
+        const { ipfs, accounts, storage/* , updateIndexes */, showNotification } = this.props;
 
         let fileReader = new FileReader();
         this.setState({ loading: true });
@@ -45,7 +44,7 @@ class AddFile extends React.Component {
                         this.state.name)
                     .send({ from: accounts[0] });
 
-                updateIndexes(storage, accounts[0]);
+                // updateIndexes(storage, accounts[0]);
                 this.setState({
                     file: "",
                     name: "",
@@ -89,4 +88,4 @@ export default connect((state) => ({
     ipfs: state.contract.ipfs,
     storage: state.contract.storage,
     accounts: state.contract.accounts,
-}), { updateIndexes, showNotification })(AddFile);
+}), { showNotification })(AddFile);

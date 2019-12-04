@@ -1,21 +1,21 @@
 import React from 'react';
 import ListItem from '../ListItem/ListItem';
-import { setIndexes } from "../../actions/contract";
+import { setIndexes, updateSharedIndexes } from "../../actions/contract";
 import { connect } from "react-redux";
 import './SharedFiles.css';
 
 class SharedFiles extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            indexes: [],
-        }
+    async componentDidMount() {
+        const { accounts, storage, updateSharedIndexes } = this.props;
+        updateSharedIndexes(storage, accounts[0]);
     }
 
-    async componentDidMount() {
-        const { accounts, storage, setIndexes } = this.props;
-        const indexes = await storage.methods.getSharedIndexes().call({ from: accounts[0] });
-        setIndexes(indexes);
+    async componentDidUpdate(prevProps) {
+        const { accounts, storage, updateIndexes } = this.props;
+        if (prevProps.accounts !== this.props.accounts) {
+            const { accounts, storage, updateSharedIndexes } = this.props;
+            updateSharedIndexes(storage, accounts[0]);
+        }
     }
 
     render() {
@@ -42,5 +42,5 @@ export default connect((state) => ({
     ipfs: state.contract.ipfs,
     storage: state.contract.storage,
     accounts: state.contract.accounts,
-    indexes: state.contract.indexes,
-}), { setIndexes })(SharedFiles);
+    indexes: state.contract.sharedIndexes,
+}), { setIndexes, updateSharedIndexes })(SharedFiles);

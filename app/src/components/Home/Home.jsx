@@ -1,6 +1,6 @@
 import React from 'react';
 import ListItem from '../ListItem/ListItem';
-import { setIndexes } from "../../actions/contract";
+import { setIndexes, updateIndexes } from "../../actions/contract";
 import { connect } from "react-redux";
 import './Home.css';
 
@@ -20,6 +20,13 @@ class Home extends React.Component {
             setIndexes(indexes);
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.accounts[0] !== this.props.accounts[0]) {
+            const { accounts, storage, updateIndexes } = this.props;
+            updateIndexes(storage, accounts[0]);
         }
     }
 
@@ -47,4 +54,4 @@ export default connect((state) => ({
     storage: state.contract.storage,
     accounts: state.contract.accounts,
     indexes: state.contract.indexes,
-}), { setIndexes })(Home);
+}), { setIndexes, updateIndexes })(Home);

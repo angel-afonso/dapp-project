@@ -2,10 +2,10 @@ import React from 'react';
 import "./ListItem.css";
 import { connect } from "react-redux";
 import { ReactComponent as Dots } from "../../assets/img/three-dots.svg";
-import { ReactComponent as Image } from "../../assets/img/image.svg";
-import { ReactComponent as Pdf } from "../../assets/img/PDF.svg";
-import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
-import { ReactComponent as Word } from "../../assets/img/WORD.svg";
+// import { ReactComponent as Image } from "../../assets/img/image.svg";
+// import { ReactComponent as Pdf } from "../../assets/img/PDF.svg";
+// import { ReactComponent as PowerPoint } from "../../assets/img/POWER POINT.svg";
+// import { ReactComponent as Word } from "../../assets/img/WORD.svg";
 import Options from "./Options";
 import { showShareModal, showDeleteModal } from "../../actions/ui";
 import { BigNumber } from "bignumber.js";
@@ -88,7 +88,7 @@ class ListItem extends React.Component {
     render() {
         return (
             <div className="item-card">
-                <div className="item-card__container">
+                <div className="item-card__container" title={this.state.name}>
                     <div className="item-card__image-container" >
                         {this.state.loading ? <Loader onlyCircle /> : null}
                     </div>
